@@ -20,14 +20,13 @@ html {
 	/*scroll-behavior: smooth;*/
 }
 ol, ul {
-	padding-right: 2rem;
 	margin-bottom: 2rem;
 	border-bottom: 1px solid gray;
 	overflow: auto;
 }
 li {
 	float: right;
-	margin-right: 3rem;
+	margin-right: 2rem;
 }
 i {
 	font-style: normal;
