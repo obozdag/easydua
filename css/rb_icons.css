@@ -1,0 +1,54 @@
+[class^="rb"], [class*=" rb"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'rb-quran' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.rb-info:before {
+	content: "\69";
+}
+.rb-bookmark:before {
+	content: "\62";
+}
+.rb-settings:before {
+	content: "\73";
+}
+.rb-quran:before {
+	content: "\71";
+}
+.rb-pages:before {
+	content: "\70";
+}
+.rb-check:before {
+	content: "\68";
+}
+.rb-cancel:before {
+	content: "\63";
+}
+.rb-verse-less:before {
+	content: "\3c";
+}
+.rb-verse-grater:before {
+	content: "\3e";
+}
+.rb-ver-square-open:before {
+	content: "\5b";
+}
+.rb-ver-square-close:before {
+	content: "\5d";
+}
+.rb-verse-open:before {
+	content: "\28";
+}
+.rb-verse-close:before {
+	content: "\29";
+}
