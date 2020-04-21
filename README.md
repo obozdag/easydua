@@ -22,4 +22,4 @@ After installing without internet connection it can run offline.
 
 For feature requests or any bug reports please send email to info at fklavye dot net
 
-That is an open source project. You can contribute on github
+That is an open source project. You can contribute on github [github](https://github.com/obozdag/dua)
