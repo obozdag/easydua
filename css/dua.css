@@ -34,8 +34,9 @@
 	--max-width: 600px; /* maximum width for container */
 	--nsbc: gray; /* nav side background color */
 	--nth: 42px; /* nav top height */
+	--nav-top-bg-color: steelblue;
 	--set-bg-color: cornsilk; /* arabic background color */
-	--set-color: brown; /* color to change in settings */ /* SET IN JS */
+	--set-color: red; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'Hamdullah'; /* arabic font family */ /* SET IN JS */
 	--set-font-size: 28px; /* arabic font size */ /* SET IN JS */
 }
@@ -105,7 +106,7 @@ i {
 	max-width: var(--max-width);
 	margin: 0 auto;
 	padding: 10px;
-	background-color: var(--set-color);
+	background-color: var(--nav-top-bg-color);
 	color: white;
 	border-bottom: 3px solid var(--set-bg-color);
 	z-index: 1;
@@ -114,16 +115,6 @@ i {
 	color: white;
 	cursor: pointer;
 	z-index: 100;
-}
-.sajdah {
-	color: var(--set-color);
-}
-.sajdah:after {
-	content: 'k';
-	display: inline-block;
-	font-family: 'rb-icons';
-	color: var(--set-color);
-	margin-right: 5px;
 }
 .basmala {
 	font-family: var(--set-font-family);
@@ -244,29 +235,22 @@ i {
 	margin-right: 1rem;
 	cursor: pointer;
 }
-/*Sura names*/
-.sn {
-	padding: 1rem;
-	font-family: sans-serif;
-	font-size: 18px;
-	text-align: center;
-	color: var(--set-color);
-	page-break-inside: avoid;
-	direction: ltr;
-	margin-top: 1rem;
-}
 /*Verse numbers*/
 .vn {
 	font-family: 'rb-icons', sans-serif;
 	font-size: .5em;
 	color: var(--set-color);
 }
-/*Page anchor button*/
+/* Last sentence*/
+.ls {
+	color: var(--set-color);
+}
+/*Paragraph anchor button*/
 .pa {
 	margin-left: 1rem;
-	padding: 2px 6px;
-	color: gray;
-	border: 1px solid gray;
+	padding: 3px 8px;
+	color: var(--set-color);
+	border: 1px solid var(--set-color);
 	border-radius: var(--brs);
 	cursor: pointer;
 	user-select: none;
@@ -325,21 +309,6 @@ i {
 }
 .ul.icons li {
 	margin-bottom: .8rem;
-}
-#sura_list {
-}
-#sura_shortcuts {
-}
-#sura_shortcuts_label {
-	margin-bottom: 1rem;
-}
-.sura_shortcut {
-	display: grid;
-	grid-template-columns: 3fr 2fr;
-	grid-gap: 5px;
-	align-items: center;
-	margin-bottom: 1.5rem;
-	cursor: pointer;
 }
 footer {
 	clear: both;
