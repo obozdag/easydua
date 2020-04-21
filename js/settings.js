@@ -1,5 +1,5 @@
 defaultBgColor    = 'cornsilk';
-defaultColor      = 'brown';
+defaultColor      = 'steelblue';
 defaultFontFamily = 'Hamdullah';
 defaultFontSize   = '28px';
 
@@ -7,8 +7,6 @@ languages = {
 	'tr' : 'Türkçe',
 	'en' : 'English',
 };
-
-ajza = {}; for(i=1; i<=30;i++){ajza[i] = i;};
 
 fontFamilies  = {
 	'Hamdullah'  : 'Hamdullah',
@@ -51,7 +49,7 @@ colors = {
 	'red'            : 'Red',
 	'royalblue'      : 'Royalblue',
 	'seagreen'       : 'Seagreen',
-	'steelblue'      : 'Steelblue',
+	// 'steelblue'      : 'Steelblue',
 	'teal'           : 'Teal',
 };
 
