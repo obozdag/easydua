@@ -10,7 +10,7 @@ After installing without internet connection it can run offline.
 - Runs on web and mobile (Responsive)
 - Installable
 - Runs offline
-- Lightweight (About 180KB)
+- Lightweight (About 200KB)
 - Lightning fast
 - Goto paragraph
 - Font family selection
