@@ -7,14 +7,6 @@
 	src:url(fonts/lateef.ttf);
 }
 @font-face {
-	font-family:"Saleem";
-	src:url(fonts/saleem.ttf);
-}
-@font-face {
-	font-family:"Seherezade";
-	src:url(fonts/seherezade.ttf);
-}
-@font-face {
 	font-family:"rb-icons";
 	src:url(fonts/rb_icons.ttf);
 }
@@ -330,7 +322,7 @@ footer a {
 }
 .logo {
 	padding: 5px;
-	background-color: var(--set-color);
+	background-color: var(--nav-top-bg-color);
 	color: white;
 	border-radius: 50%;
 	font-size: 1rem;
