@@ -10,6 +10,7 @@ languages = {
 
 fontFamilies  = {
 	'Hamdullah'  : 'Hamdullah',
+	'Lateef'     : 'Lateef',
 };
 
 fontSizes = {
