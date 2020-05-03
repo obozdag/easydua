@@ -17,7 +17,7 @@ var staticContentToCache = [
 	'css/icons/dua_192x192.png',
 	'css/icons/dua_384x384.png',
 	'css/icons/dua_512x512.png',
-	'css/icons/dua_loading.gif',
+	'css/icons/loading.gif',
 	'app.js',
 	'js/swipe.js',
 	'js/lang.js',
