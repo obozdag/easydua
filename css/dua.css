@@ -31,6 +31,7 @@
 	--set-color: steelblue; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'Hamdullah'; /* arabic font family */ /* SET IN JS */
 	--set-font-size: 28px; /* arabic font size */ /* SET IN JS */
+	--theme-color: steelblue; /* application theme color */
 }
 * {
 	margin: 0;
@@ -342,7 +343,7 @@ footer a {
 	bottom: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: teal;
+	background-color: var(--theme-color);
 	z-index: 200;
 	opacity: 1;
 	visibility: visible;
