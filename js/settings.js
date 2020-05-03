@@ -27,6 +27,9 @@ fontSizes = {
 	'38px' : '38',
 	'40px' : '40',
 	'42px' : '42',
+	'44px' : '44',
+	'46px' : '46',
+	'48px' : '48',
 };
 
 colors = {
@@ -50,7 +53,7 @@ colors = {
 	'red'            : 'Red',
 	'royalblue'      : 'Royalblue',
 	'seagreen'       : 'Seagreen',
-	// 'steelblue'      : 'Steelblue',
+	'steelblue'      : 'Steelblue',
 	'teal'           : 'Teal',
 };
 
