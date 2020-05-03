@@ -23,7 +23,7 @@
 :root {
 	--ac: black; /* arabic text color */
 	--brs: 5px; /* border radius */
-	--max-width: 600px; /* maximum width for container */
+	--max-width: 768px; /* maximum width for container */
 	--nsbc: gray; /* nav side background color */
 	--nth: 42px; /* nav top height */
 	--nav-top-bg-color: steelblue;
@@ -54,6 +54,7 @@ html {
 }
 i {
 	font-style: normal;
+	white-space: nowrap;
 }
 .btn {
 	padding: 2px 6px;
