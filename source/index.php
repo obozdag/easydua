@@ -10,7 +10,7 @@
 	<meta name="theme-color" content="#4682b4">
 	<link rel="stylesheet" type="text/css" href="css/dua.css">
 	<link rel="apple-touch-icon" href="css/icons/dua_96x96.png">
-	<!-- <link rel="manifest" href="dua.json"> -->
+	<link rel="manifest" href="dua.json">
 </head>
 <body>
 	<div id="loading_overlay">
@@ -75,18 +75,21 @@
 			<ul id="p1">
 			<?php
 			foreach($rows_cevsen as $row):
-				if ($row['paragraph_no'] == null):
+				$paragraph_no = $row['paragraph_no'];
+				$sentence_no = (isset($paragraph_no) && $paragraph_no < 100) ? '<i class="vn">('.$row['sentence_no'].')</i>' : '';
+
+				if ($paragraph_no == null):
 				?>
-					<li><i class="vn">(<?= $row['sentence_no'] ?>)</i><i><?= $row['sentence'] ?></i></li>
+					<li><?= $sentence_no ?><i><?= $row['sentence'] ?></i></li>
 				<?php
 				else:
-					$paragraph_anchor_href  = 'p'.$row['paragraph_no'];
+					$paragraph_anchor_href  = 'p'.$paragraph_no;
 				?>
-					<li><i class="vn pa" data-target="<?= $paragraph_anchor_href ?>"><?= $row['paragraph_no'] ?></i><i class="ls"><?= $row['sentence'] ?></i></li>
+					<li><i class="vn pa" data-target="<?= $paragraph_anchor_href ?>"><?= $paragraph_no ?></i><i class="ls"><?= $row['sentence'] ?></i></li>
 				</ul>
 					<?php
-					if (($row['paragraph_no']+0) < 101): ?>
-						<ul id="<?= 'p'.($row['paragraph_no']+1) ?>">
+					if ($paragraph_no <= 101): ?>
+				<ul id="<?= 'p'.($paragraph_no+1) ?>">
 					<?php
 					endif; ?>
 				<?php
@@ -100,7 +103,7 @@
 	<div class="overlay" id="program_info_popup">
 		<div class="popup">
 			<i id="close_popup_btn" class="rb close_btn right">c</i>
-			<h3><i class="rb logo">a</i> Easy Dua <?= $version ?></h3>
+			<h3><i class="rb logo">r</i> Easy Dua <?= $version ?></h3>
 			<div id="program_info_content">
 			</div>
 		</div>
@@ -109,6 +112,6 @@
 	<script src="js/lang.js"></script>
 	<script src="js/settings.js"></script>
 	<script src="js/dua.js"></script>
-	<!-- <script src="app.js"></script> -->
+	<script src="app.js"></script>
 </body>
 </html>
