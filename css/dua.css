@@ -28,7 +28,7 @@
 	--nth: 42px; /* nav top height */
 	--nav-top-bg-color: steelblue;
 	--set-bg-color: cornsilk; /* arabic background color */
-	--set-color: red; /* color to change in settings */ /* SET IN JS */
+	--set-color: steelblue; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'Hamdullah'; /* arabic font family */ /* SET IN JS */
 	--set-font-size: 28px; /* arabic font size */ /* SET IN JS */
 }
@@ -98,7 +98,7 @@ i {
 	max-width: var(--max-width);
 	margin: 0 auto;
 	padding: 10px;
-	background-color: var(--nav-top-bg-color);
+	background-color: var(--set-color);
 	color: white;
 	border-bottom: 3px solid var(--set-bg-color);
 	z-index: 1;
@@ -299,8 +299,9 @@ i {
 	list-style-type: disc;
 	color: var(--set-color);
 }
-.ul.icons li {
+.ul li {
 	margin-bottom: .8rem;
+	line-height: 1.4;
 }
 footer {
 	clear: both;
@@ -322,7 +323,7 @@ footer a {
 }
 .logo {
 	padding: 5px;
-	background-color: var(--nav-top-bg-color);
+	background-color: var(--set-color);
 	color: white;
 	border-radius: 50%;
 	font-size: 1rem;
