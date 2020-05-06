@@ -119,7 +119,7 @@ i {
 #nav_left, #nav_right {
 	position: fixed;
 	top: var(--nth);
-	width: 70%;
+	width: 75%;
 	max-width: 400px;
 	height: 100vh;
 	margin: 0;
@@ -132,11 +132,11 @@ i {
 	transition: .5s;
 }
 #nav_left {
-	left: -70%;
+	left: -75%;
 	border-top-right-radius: var(--brs);
 }
 #nav_right {
-	right: -70%;
+	right: -75%;
 	border-top-left-radius: var(--brs);
 }
 #nav_left.open {
