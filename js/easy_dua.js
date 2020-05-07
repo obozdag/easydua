@@ -1,7 +1,5 @@
 window.onload = ()=>{
 
-	loading(false);
-
 	// Define elements
 	let bgColorList         = document.getElementById('bg_color_list');
 	let bookmarkContainer   = document.getElementById('bookmark_container');
@@ -27,6 +25,8 @@ window.onload = ()=>{
 	let arabic              = document.getElementById('arabic');
 	let resetBtn            = document.getElementById('reset_btn');
 	let topBtn              = document.getElementById('top_btn');
+	let duaList             = document.getElementById('dua_list');
+	let settingsHeader      = document.getElementById('settings_header');
 
 	// Anchors in arabic
 	let paragraphAnchors    = document.querySelectorAll('.pa');
@@ -38,7 +38,29 @@ window.onload = ()=>{
 	let fontSizeListLabel   = document.getElementById('font_size_list_label');
 	let languageListLabel   = document.getElementById('language_list_label');
 	let paragraphInputLabel = document.getElementById('paragraph_input_label');
+	let duaListLabel        = document.getElementById('dua_list_label');
 
+	loading(false);
+	loadTabs()
+
+	async function loadTabs()
+	{
+		path = 'duas/ismi_azam.html'
+		document.getElementById('ismi_azam').innerHTML = await fetch(path).then(data=>data.text()).then(html=>{ return html})
+	}
+
+	function openTab(tab='jawshan')
+	{
+		console.log(tab)
+		tabContents = document.getElementsByClassName('tabcontent')
+
+		for (i = 0; i < tabContents.length; i++) {
+			tabContents[i].style.display = "none"
+		}
+
+		document.getElementById(tab).style.display = 'block'
+		closeNavs()
+	}
 
 	// Set current language first
 	if( typeof currentLanguage === 'undefined')
@@ -65,6 +87,7 @@ window.onload = ()=>{
 
 	setLabels(currentLanguage);
 	fillSelects();
+	fillTabLinks(currentLanguage);
 
 	// Than install event listeners for quick responsiveness then settings if exist
 	installEventListeners();
@@ -77,7 +100,7 @@ window.onload = ()=>{
 			setLanguage(languageList.value);
 		});
 
-		// paragraph anchors
+		// Paragraph anchors
 		for(let i=0; i < paragraphAnchors.length; i++)
 		{
 			paragraphAnchors[i].addEventListener('click', addBookmark, false);
@@ -108,14 +131,14 @@ window.onload = ()=>{
 			resetSettings();
 		});
 
-		// paragraph no input
+		// Paragraph no input
 		paragraphNo.addEventListener('keyup', function(e){if (e.keyCode == 13) paragraphToTop()});
 		gotoParagraphBtn.addEventListener('click', paragraphToTop);
 
-		// arabic to top
+		// Arabic to top
 		topBtn.addEventListener('click', arabicToTop);
 
-		// arabic to bottom
+		// Arabic to bottom
 		bottomBtn.addEventListener('click', arabicToBottom);
 
 		// Clean bookmark
@@ -196,7 +219,9 @@ window.onload = ()=>{
 	function setLanguage(language)
 	{
 		setLabels(language);
+		fillTabLinks(language)
 		replaceBookmarksAndInfos(language);
+
 		currentLanguage = language;
 		localStorage.setItem('language', language);
 		closeNavs();
@@ -225,6 +250,8 @@ window.onload = ()=>{
 		languageListLabel.textContent   = translations[language][languageListLabel.id];
 		gotoParagraphBtn.textContent    = translations[language][gotoParagraphBtn.id];
 		resetBtn.textContent            = translations[language][resetBtn.id];
+		duaListLabel.textContent        = translations[language][duaListLabel.id];
+		settingsHeader.textContent      = translations[language][settingsHeader.id];
 	}
 
 	function fillSelects()
@@ -245,6 +272,26 @@ window.onload = ()=>{
 			option.textContent = text;
 			selectElement.appendChild(option);
 			if (defaultOption == value) selectElement.value = value;
+		}
+	}
+
+	function fillTabLinks(language)
+	{
+		let listElement = duaList
+		let listItems   = translations[language]['duas']
+
+		// First remove list items before adding new ones
+		while(child = listElement.lastChild){listElement.removeChild(child)}
+
+		for ([value, text] of Object.entries(listItems))
+		{
+			let listItem = document.createElement('li');
+			listItem.id = value+'_tab';
+			listItem.dataset.target = value;
+			listItem.textContent = text;
+			listItem.classList.add('tablink');
+			listItem.addEventListener('click', ()=>{openTab(listItem.dataset.target)})
+			listElement.appendChild(listItem);
 		}
 	}
 

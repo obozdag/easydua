@@ -10,6 +10,12 @@ translations = {
 	'paragraph_input_label'  : 'Paragraf',
 	'reset_btn'              : 'Reset',
 	'confirm_delete_bookmark': 'Yer işaretini silmek istiyor musunuz?',
+	'dua_list_label'         : 'Dualar',
+	'settings_header'        : 'Ayarlar',
+	'duas'                   : {
+			'jawshan':"Cevşen",
+			'ismi_azam':"İsmi Azam",
+		},
 	},
 
 	en: {
@@ -23,5 +29,11 @@ translations = {
 	'paragraph_input_label'  : 'Paragraph',
 	'reset_btn'              : 'Reset',
 	'confirm_delete_bookmark': 'Do you really want to delete bookmark?',
+	'dua_list_label'         : 'Duas',
+	'settings_header'        : 'Settings',
+	'duas'                   : {
+			'jawshan':"Jawshan",
+			'ismi_azam':"Ismi Azam",
+		},
 	}
 };
