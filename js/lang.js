@@ -33,7 +33,7 @@ translations = {
 	'settings_header'        : 'Settings',
 	'duas'                   : {
 			'jawshan':"Jawshan",
-			'ismi_azam':"Ismi Azam",
+			'ismi_azam':"Ism Azam",
 		},
 	}
 };
