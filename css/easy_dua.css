@@ -78,11 +78,10 @@ i {
 	margin: 0 auto;
 }
 .arabic {
-	text-align: justify;
+	/*text-align: justify;*/
 	font-family: var(--set-font-family);
-	font-weight: 400;
+	/*font-weight: 400;*/
 	font-size: var(--set-font-size);
-	page-break-inside: avoid;
 	background-color: var(--set-bg-color);
 	color: var(--ac);
 	direction: rtl;
@@ -167,15 +166,15 @@ i {
 	text-align: center;
 }
 .settings {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.settings .row {
 	display: grid;
-	grid-template-columns: 30% 60%;
-	grid-gap: 2rem 5px;
-	align-items: center;
-}
-.settings dt {
-	text-align: right;
-}
-.settings dd {
+	grid-template-columns: 30% 65%;
+	grid-gap: 5px;
+	margin-bottom: 1rem;
 }
 .settings input,
 .settings select {
@@ -186,6 +185,22 @@ i {
 	border-radius: var(--brs);
 	font-size: 1rem;
 	outline: none;
+}
+#settings_header {
+	margin-bottom: 1rem;
+	padding: .5rem 1rem;
+	border-bottom: 1px solid rgba(200, 200, 200, .5);
+	text-align: center;
+	font-size: 1.2rem;
+}
+#dua_list_container {
+	padding: 5px;
+	overflow-y: auto;
+	border: 1px solid rgba(200, 200, 200, .5);
+}
+#dua_list li {
+	margin-bottom: 1rem;
+	cursor: pointer;
 }
 .goto_paragraph_container {
 	display: grid;
@@ -367,6 +382,15 @@ footer a {
 }
 #nav_loading {
 	display: none;
+}
+#ismi_azam {
+}
+#ismi_azam span {
+	display: inline-block;
+}
+@media screen and (min-width: 768px) {
+	#ismi_azam span {
+	}
 }
 @media print {
 	.container {
