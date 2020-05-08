@@ -1,5 +1,5 @@
 defaultBgColor    = 'cornsilk';
-defaultColor      = 'steelblue';
+defaultColor      = 'red';
 defaultFontFamily = 'Hamdullah';
 defaultFontSize   = '28px';
 
