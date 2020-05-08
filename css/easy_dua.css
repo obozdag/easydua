@@ -26,9 +26,9 @@
 	--max-width: 768px; /* maximum width for container */
 	--nsbc: gray; /* nav side background color */
 	--nth: 42px; /* nav top height */
-	--nav-top-bg-color: steelblue;
+	--nav-top-bg-color: red;
 	--set-bg-color: cornsilk; /* arabic background color */
-	--set-color: steelblue; /* color to change in settings */ /* SET IN JS */
+	--set-color: red; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'Hamdullah'; /* arabic font family */ /* SET IN JS */
 	--set-font-size: 28px; /* arabic font size */ /* SET IN JS */
 	--theme-color: steelblue; /* application theme color */
