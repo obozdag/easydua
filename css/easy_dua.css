@@ -31,7 +31,7 @@
 	--set-color: red; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'Hamdullah'; /* arabic font family */ /* SET IN JS */
 	--set-font-size: 28px; /* arabic font size */ /* SET IN JS */
-	--theme-color: orange; /* application theme color */
+	--theme-color: red; /* application theme color */
 }
 * {
 	margin: 0;
