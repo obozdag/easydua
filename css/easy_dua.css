@@ -31,7 +31,7 @@
 	--set-color: red; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'Hamdullah'; /* arabic font family */ /* SET IN JS */
 	--set-font-size: 28px; /* arabic font size */ /* SET IN JS */
-	--theme-color: red; /* application theme color */
+	--theme-color: steelblue; /* application theme color */
 }
 * {
 	margin: 0;
@@ -378,10 +378,17 @@ footer a {
  {
 	margin-bottom: 1rem;
 }
-#loading_image {
+.loader{
+	color:white;
+	fill:white;
+	font-family: 'rb-icons';
 }
-#nav_loading {
-	display: none;
+.loader:before{
+	content:"r";
+	position:relative;
+	font-size:1.6em;
+	right:-62px;
+	top:-49px;
 }
 #ismi_azam {
 }
