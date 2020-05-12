@@ -4,8 +4,8 @@
 	"description": "Easy to read and scroll",
 	"start_url": "/",
 	"display": "fullscreen",
-	"background_color": "red",
-	"theme_color": "red",
+	"background_color": "steelblue",
+	"theme_color": "steelblue",
 	"icons": [
 		{
 			"src": "css/icons/easy_dua_72x72.png",
