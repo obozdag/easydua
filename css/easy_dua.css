@@ -391,6 +391,7 @@ footer a {
 	top:-49px;
 }
 #ismi_azam {
+	display: none;
 }
 #ismi_azam span {
 	display: inline-block;
