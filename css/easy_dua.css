@@ -390,10 +390,13 @@ footer a {
 	right:-62px;
 	top:-49px;
 }
-#ismi_azam {
+.tabcontent {
 	display: none;
 }
-#ismi_azam span {
+.tabcontent.open {
+	display: block;
+}
+.tabcontent span {
 	display: inline-block;
 }
 @media screen and (min-width: 768px) {
