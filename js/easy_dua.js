@@ -82,7 +82,6 @@ window.onload = ()=>{
 		{
 			if(dua == 'jawshan') continue
 			path = 'duas/'+dua+'.html'
-		console.log(dua)
 			document.getElementById(dua).innerHTML = await fetch(path).then(data=>data.text()).then(html=>{ return html})
 		}
 	}
