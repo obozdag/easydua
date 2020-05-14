@@ -15,6 +15,7 @@ translations = {
 	'duas'                   : {
 			'jawshan':"Cevşen",
 			'ismi_azam':"İsmi Azam",
+			'tercumani_ismi_azam':"Tercuman-ı İsmi Azam",
 		},
 	},
 
@@ -34,6 +35,7 @@ translations = {
 	'duas'                   : {
 			'jawshan':"Jawshan",
 			'ismi_azam':"Ism Azam",
+			'tercumani_ismi_azam':"Ism Azam 2",
 		},
 	}
 };

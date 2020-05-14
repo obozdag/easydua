@@ -41,26 +41,6 @@ window.onload = ()=>{
 	let duaListLabel        = document.getElementById('dua_list_label');
 
 	loading(false);
-	loadTabs()
-
-	async function loadTabs()
-	{
-		path = 'duas/ismi_azam.html'
-		document.getElementById('ismi_azam').innerHTML = await fetch(path).then(data=>data.text()).then(html=>{ return html})
-	}
-
-	function openTab(tab='jawshan')
-	{
-		console.log(tab)
-		tabContents = document.getElementsByClassName('tabcontent')
-
-		for (i = 0; i < tabContents.length; i++) {
-			tabContents[i].style.display = "none"
-		}
-
-		document.getElementById(tab).style.display = 'block'
-		closeNavs()
-	}
 
 	// Set current language first
 	if( typeof currentLanguage === 'undefined')
@@ -88,10 +68,36 @@ window.onload = ()=>{
 	setLabels(currentLanguage);
 	fillSelects();
 	fillTabLinks(currentLanguage);
+	loadTabs()
+
 
 	// Than install event listeners for quick responsiveness then settings if exist
 	installEventListeners();
 	restoreSettings();
+
+	async function loadTabs()
+	{
+		duas =  translations[currentLanguage]['duas']
+		for ([dua, value] of Object.entries(duas))
+		{
+			if(dua == 'jawshan') continue
+			path = 'duas/'+dua+'.html'
+			document.getElementById(dua).innerHTML = await fetch(path).then(data=>data.text()).then(html=>{ return html})
+		}
+	}
+
+	function openTab(tab='jawshan')
+	{
+		console.log(tab)
+		tabContents = document.getElementsByClassName('tabcontent')
+
+		for (i = 0; i < tabContents.length; i++) {
+			tabContents[i].style.display = "none"
+		}
+
+		document.getElementById(tab).style.display = 'block'
+		closeNavs()
+	}
 
 	function installEventListeners()
 	{
@@ -470,6 +476,7 @@ function loading(load = true, opacity = 1)
 
 	if(load)
 	{
+		loadingOverlay.style.display = 'block';
 		loadingOverlay.style.opacity = opacity;
 		loadingOverlay.style.visibility = 'visible';
 	}
@@ -477,6 +484,8 @@ function loading(load = true, opacity = 1)
 	{
 		loadingOverlay.style.opacity = '0';
 		loadingOverlay.style.visibility = 'hidden';
+		loadingOverlay.style.display = 'none';
+
 	}
 
 }
