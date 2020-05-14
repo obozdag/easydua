@@ -399,6 +399,10 @@ footer a {
 .tabcontent span {
 	display: inline-block;
 }
+em {
+	font-style: normal;
+	color: var(--set-color);
+}
 @media screen and (min-width: 768px) {
 	#ismi_azam span {
 	}
