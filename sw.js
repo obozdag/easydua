@@ -1,5 +1,6 @@
-var cacheName = 'EasyDua v1.22';
+var cacheName = 'EasyDua v1.22.1';
 var staticContentToCache = [
+	'/',
 	'index.html',
 	'favicon.ico',
 	'css/easy_dua.css',
@@ -17,6 +18,7 @@ var staticContentToCache = [
 	'css/icons/easy_dua_192x192.png',
 	'css/icons/easy_dua_384x384.png',
 	'css/icons/easy_dua_512x512.png',
+	'css/icons/loading.gif',
 	'app.js',
 	'js/swipe.js',
 	'js/lang.js',
