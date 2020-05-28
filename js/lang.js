@@ -17,6 +17,7 @@ translations = {
 			'ismi_azam':"İsmi Azam",
 			'tercumani_ismi_azam':"Tercuman-ı İsmi Azam",
 			'munacati_veysel_karani':"Münacat-ı Veysel Karani",
+			'sekine':"Sekine",
 		},
 	},
 
@@ -38,6 +39,7 @@ translations = {
 			'ismi_azam':"Ism Azam",
 			'tercumani_ismi_azam':"Ism Azam 2",
 			'munacati_veysel_karani':"Dua Veysel Karani",
+			'sekine':"Sekine",
 		},
 	}
 };
