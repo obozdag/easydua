@@ -1,4 +1,4 @@
-var cacheName = 'EasyDua v1.22.17';
+var cacheName = 'EasyDua v1.22.18';
 var staticContentToCache = [
 	'/',
 	'index.html',
