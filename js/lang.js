@@ -18,6 +18,7 @@ translations = {
 			'tercumani_ismi_azam':"Tercuman-ı İsmi Azam",
 			'munacati_veysel_karani':"Münacat-ı Veysel Karani",
 			'sekine':"Sekine",
+			'tefriciye':"Salat-ı Tefriciye",
 		},
 	},
 
@@ -40,6 +41,7 @@ translations = {
 			'tercumani_ismi_azam':"Ism Azam 2",
 			'munacati_veysel_karani':"Dua Veysel Karani",
 			'sekine':"Sekine",
+			'tefriciye':"Salaat Tafrijiyah",
 		},
 	}
 };
