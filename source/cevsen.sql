@@ -619,7 +619,7 @@ INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('1', 'يَا مَنْ
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('2', 'يَا مَنْ هُوَ فِي الْاَرْضِ اَيَاتُهُ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('3', 'يَا مَنْ هُوَ فِي كُلِّ شَيْءٍ دَلَائِلُهُ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('4', 'يَا مَنْ هُوَ فِي الْبِحَارِ عَجَائِبُهُ');
-INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('5', 'يَا مَنْ يَبْدَوُ الْخَلْقَ ثُمَّ يُعِيدُهُ');
+INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('5', 'يَا مَنْ يَبْدَؤُ الْخَلْقَ ثُمَّ يُعِيدُهُ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('6', 'يَا مَنْ هُوَ فِي الْجِبَالِ خَزَائِنُهُ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('7', 'يَا مَنْ اَحْسَنَ كُلَّ شَيْءٍ خَلَقَهُ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('8', 'يَا مَنْ اِلَيْهِ يُرْجِعُ الْاَمْرُ كُلُّهُ');
