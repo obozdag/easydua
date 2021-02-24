@@ -802,7 +802,7 @@ INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('8', 'يَا مَنْ
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('9', 'يَا مَنْ هُوَ مَوْجُودٌ بِلاَ مِثْلٍ');
 INSERT INTO fkl_cevsen (`paragraph_no`, `sentence`) VALUES (73, 'سُبْحَانَكَ يَا لَٓا اِلٰهَ اِلَّٓا اَنْتَ اْلاَمَانُ اْلاَمَانُ نَجِّنَا مِنَ النَّارِ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('1', 'يَا مَنْ هُوَ ذِكْرُهُ شَرَفٌ لِلذَّاكِرِينَ');
-INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('2', 'يَا مَن هُوَ شُكْرُهُ فَوْزٌ لِلشَّاكِرِينَ');
+INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('2', 'يَا مَنْ هُوَ شُكْرُهُ فَوْزٌ لِلشَّاكِرِينَ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('3', 'يَا مَنْ هُوَ حَمْدُهُ فَخْرٌ لِلْحَامِدِينَ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('4', 'يَا مَنْ هُوَ طَاعَتُهُ نَجَاةٌ لِلْمُطِيعِينَ');
 INSERT INTO fkl_cevsen (`sentence_no`, `sentence`) VALUES ('5', 'يَا مَنْ هُوَ بَابُهُ مَفْتُوحٌ لِلطَّاِلبِينَ');
