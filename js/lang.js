@@ -20,6 +20,7 @@ translations = {
 			'sekine':"Sekine",
 			'tefriciye':"Salat-ı Tefriciye",
 			'ashabi_bedir':"Ashab-ı Bedir",
+			'suhedai_uhud':"Şüheda-i Uhud",
 		},
 	},
 
@@ -44,6 +45,7 @@ translations = {
 			'sekine':"Sekine",
 			'tefriciye':"Salaat Tafrijiyah",
 			'ashabi_bedir':"Ashab-ı Bedir",
+			'suhedai_uhud':"Şüheda-i Uhud",
 		},
 	}
 };
