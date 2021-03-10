@@ -51,6 +51,7 @@ html {
 	list-style: decimal;
 	list-style-position: inside;
 	display: list-item !important;
+	padding-bottom: 1rem;
 }
 .arabic ul {
 	list-style: none;
