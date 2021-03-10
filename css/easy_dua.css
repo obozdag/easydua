@@ -43,6 +43,15 @@ html {
 	font-family: sans-serif;
 	/*scroll-behavior: smooth;*/
 }
+.latin {
+	font: 16px sans-serif;
+	direction: ltr;
+}
+.latin li {
+	list-style: decimal;
+	list-style-position: inside;
+	display: list-item !important;
+}
 .arabic ul {
 	list-style: none;
 	margin-bottom: 2rem;
