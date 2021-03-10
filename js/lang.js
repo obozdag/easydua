@@ -19,6 +19,7 @@ translations = {
 			'munacati_veysel_karani':"Münacat-ı Veysel Karani",
 			'sekine':"Sekine",
 			'tefriciye':"Salat-ı Tefriciye",
+			'ashabi_bedir':"Ashab-ı Bedir",
 		},
 	},
 
@@ -42,6 +43,7 @@ translations = {
 			'munacati_veysel_karani':"Dua Veysel Karani",
 			'sekine':"Sekine",
 			'tefriciye':"Salaat Tafrijiyah",
+			'ashabi_bedir':"Ashab-ı Bedir",
 		},
 	}
 };
