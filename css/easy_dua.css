@@ -47,11 +47,19 @@ html {
 	font: 16px sans-serif;
 	direction: ltr;
 }
-.latin li {
+.latin ol li {
 	list-style: decimal-leading-zero;
+}
+.latin li {
 	list-style-position: inside;
 	display: list-item !important;
 	padding-bottom: 1rem;
+}
+.latin .vn {
+	display: inline-block;
+	width: 3rem;
+	font-size: 1rem;
+	text-align: right;
 }
 .arabic ul {
 	list-style: none;
