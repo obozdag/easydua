@@ -48,7 +48,7 @@ html {
 	direction: ltr;
 }
 .latin li {
-	list-style: decimal;
+	list-style: decimal-leading-zero;
 	list-style-position: inside;
 	display: list-item !important;
 	padding-bottom: 1rem;
