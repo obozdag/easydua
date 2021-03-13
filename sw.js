@@ -1,4 +1,4 @@
-var cacheName = 'EasyDua v1.22.54';
+var cacheName = 'EasyDua v1.22.55';
 var staticContentToCache = [
 	'/',
 	'index.html',
@@ -32,6 +32,7 @@ var staticContentToCache = [
 	'duas/sekine.html',
 	'duas/tefriciye.html',
 	'duas/ashabi_bedir.html',
+	'duas/dualar.html',
 ];
 
 // Installing Service Worker
