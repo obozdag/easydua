@@ -21,7 +21,7 @@ translations = {
 			'tefriciye':"Salat-ı Tefriciye",
 			'ashabi_bedir':"Ashab-ı Bedir",
 			'suhedai_uhud':"Şüheda-i Uhud",
-			'dualar':"Çeşitli Dualar",
+			'dualar':"Seçme Dualar",
 		},
 	},
 
@@ -47,7 +47,7 @@ translations = {
 			'tefriciye':"Salaat Tafrijiyah",
 			'ashabi_bedir':"Ashab-ı Bedir",
 			'suhedai_uhud':"Şüheda-i Uhud",
-			'dualar':"Some Duas",
+			'dualar':"Selected Duas",
 		},
 	}
 };
