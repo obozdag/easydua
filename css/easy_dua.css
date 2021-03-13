@@ -61,6 +61,22 @@ html {
 	font-size: 1rem;
 	text-align: right;
 }
+.latin h3 {
+	color: var(--set-color);
+	margin: 2rem;
+	text-align: center;
+}
+.dua {
+	margin: 1rem;
+	border-bottom: 1px solid var(--set-color);
+}
+.dua p {
+	margin-bottom: 1rem;
+	line-height: 2;
+}
+.small {
+	font-size: .7rem;
+}
 .arabic ul {
 	list-style: none;
 	margin-bottom: 2rem;
