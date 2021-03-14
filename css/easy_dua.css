@@ -66,6 +66,10 @@ html {
 	margin: 2rem;
 	text-align: center;
 }
+.latin .arabic {
+	padding: 1rem 0;
+	text-align: right;
+}
 .dua {
 	margin: 1rem;
 	border-bottom: 1px solid var(--set-color);
