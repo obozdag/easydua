@@ -74,6 +74,12 @@ html {
 	margin: 1rem;
 	margin-bottom: 2rem;
 }
+.latin.liltree {
+	background-image: url(/images/liltree.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: 50%;
+}
 .dua p {
 	margin-bottom: 1rem;
 	line-height: 2;
