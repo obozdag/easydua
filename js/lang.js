@@ -22,7 +22,6 @@ translations = {
 			'ashabi_bedir':"Ashab-ı Bedir",
 			'suhedai_uhud':"Şüheda-i Uhud",
 			'dualar':"Seçme Dualar",
-			'veysel_karani':"Veysel Karani",
 		},
 	},
 
@@ -49,7 +48,6 @@ translations = {
 			'ashabi_bedir':"Ashab-ı Bedir",
 			'suhedai_uhud':"Şüheda-i Uhud",
 			'dualar':"Selected Duas",
-			'veysel_karani':"Veysel Karani",
 		},
 	}
 };
