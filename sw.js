@@ -33,6 +33,7 @@ var staticContentToCache = [
 	'duas/tefriciye.html',
 	'duas/ashabi_bedir.html',
 	'duas/dualar.html',
+	'duas/veysel_karani.html',
 ];
 
 // Installing Service Worker
