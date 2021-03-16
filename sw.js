@@ -1,4 +1,4 @@
-var cacheName = 'EasyDua v1.22.55';
+var cacheName = 'EasyDua v1.22.56';
 var staticContentToCache = [
 	'/',
 	'index.html',
@@ -34,6 +34,7 @@ var staticContentToCache = [
 	'duas/ashabi_bedir.html',
 	'duas/dualar.html',
 	'images/flower.png',
+	'images/lavender.png',
 	'images/liltree.png',
 ];
 
