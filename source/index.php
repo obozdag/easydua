@@ -116,6 +116,9 @@
 			<div id="munacati_veysel_karani" class="tabcontent"></div>
 			<div id="sekine" class="tabcontent"></div>
 			<div id="tefriciye" class="tabcontent"></div>
+			<div id="ashabi_bedir" class="tabcontent"></div>
+			<div id="suhedai_uhud" class="tabcontent"></div>
+			<div id="dualar" class="tabcontent"></div>
 		</div>
 	</div>
 	<footer><a target="_blank" href="https://github.com/obozdag/dua"><i class="rb logo" title="Easy Dua">r</i> Easy Dua</a></footer>
@@ -131,6 +134,6 @@
 	<script src="js/lang.js"></script>
 	<script src="js/settings.js"></script>
 	<script src="js/easy_dua.js"></script>
-	<!-- <script src="app.js"></script> -->
+	<script src="app.js"></script>
 </body>
 </html>

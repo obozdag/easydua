@@ -16,4 +16,5 @@ $rows_cevsen    = mysqli_fetch_all($result_cevsen, MYSQLI_ASSOC);
 mysqli_free_result($result_cevsen);
 mysqli_close($conn);
 
-$version = 'v1.1';
+$version = 'v1.2';
+$color   = 'steelblue';
