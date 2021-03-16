@@ -74,11 +74,11 @@ html {
 	margin: 1rem;
 	margin-bottom: 2rem;
 }
-.latin.liltree {
-	background-image: url(/images/liltree.png);
-	background-repeat: no-repeat;
-	background-position: right top;
-	background-size: 50%;
+.latin.decorated {
+	background:
+		top right/30% url(/images/liltree.png) no-repeat,
+		bottom left url(/images/lavender.png) repeat-x;
+	padding-bottom: 120px;
 }
 .dua p {
 	margin-bottom: 1rem;
