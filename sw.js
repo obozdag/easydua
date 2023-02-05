@@ -1,12 +1,14 @@
-var cacheName = 'EasyDua v1.22.62';
+var cacheName = 'EasyDua v1.3.12';
 var staticContentToCache = [
 	'/',
-	'index.html',
+	'index.php',
 	'favicon.ico',
+	'css/fonts.css',
+	'css/rb.css',
 	'css/easy_dua.css',
-	'css/fonts/hamdullah.ttf',
-	'css/fonts/lateef.ttf',
-	'css/fonts/rb_icons.ttf',
+	'css/fonts/EasyArabic.ttf',
+	'css/fonts/Lateef.ttf',
+	'css/fonts/rb.ttf',
 	'css/icons/easy_dua_32x32.png',
 	'css/icons/easy_dua_48x48.png',
 	'css/icons/easy_dua_64x64.png',

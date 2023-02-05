@@ -1,6 +1,6 @@
 defaultBgColor    = 'cornsilk';
 defaultColor      = 'red';
-defaultFontFamily = 'Hamdullah';
+defaultFontFamily = 'EasyArabic';
 defaultFontSize   = '28px';
 
 languages = {
@@ -9,7 +9,7 @@ languages = {
 };
 
 fontFamilies  = {
-	'Hamdullah'  : 'Hamdullah',
+	'EasyArabic' : 'EasyArabic',
 	'Lateef'     : 'Lateef',
 };
 
