@@ -15,8 +15,6 @@
 	<meta name="apple-mobile-web-app-status-bar" content="<?= $color ?>">
 	<meta name="theme-color" content="<?= $color ?>">
 	<link rel="canonical" href="https://dua.fklavye.net">
-	<link rel="preload" href="/css/fonts/EasyArabic.ttf" as="font" crossorigin>
-	<link rel="preload" href="/css/fonts/rb.ttf" as="font" crossorigin>
 	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css">
 	<link rel="apple-touch-icon" href="/css/icons/easy_dua_96x96.png">
 	<link rel="manifest" href="easy_dua.json">

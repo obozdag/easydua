@@ -1,12 +1,13 @@
 @import "fonts.css";
 @import "rb.css";
+[class^="rb-"], [class*=" rb-"] {
+	font-size: 1.2rem;
+}
 :root {
 	--ac: black; /* arabic text color */
 	--brs: 5px; /* border radius */
-	--footer-bg-color: red; /* footer background color */
 	--icon-font-family: 'rb'; /* icons font family */
 	--max-width: 768px; /* maximum width for container */
-	--nav-top-bg-color: red;
 	--nsbc: steelblue; /* nav side background color */
 	--nth: 42px; /* nav top height */
 	--set-bg-color: cornsilk; /* arabic background color */
@@ -126,7 +127,6 @@ i {
 	padding: 10px;
 	background-color: var(--set-color);
 	color: white;
-	border-bottom: 3px solid var(--set-bg-color);
 	z-index: 1;
 }
 .nav_top_btn {
@@ -174,7 +174,6 @@ i {
 	position: absolute;
 	top: 10px;
 	cursor: pointer;
-	color: lightgray;
 }
 .close_btn.right {
 	right: 10px;
@@ -313,9 +312,6 @@ i {
 	background: rgba(0, 0, 0, .7);
 	opacity: 0;
 }
-#close_popup_btn {
-	color: gray;
-}
 #close_popup_btn:hover {
 	color: var(--set-color);
 }
@@ -366,7 +362,7 @@ footer {
 	max-width: var(--max-width);
 	margin: 0 auto;
 	padding: 30px 5px;
-	background-color: var(--footer-bg-color);
+	background-color: var(--set-color);
 	color: white;
 	font-family: sans-serif;
 	text-align: center;
