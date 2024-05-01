@@ -1,9 +1,8 @@
 <?php
-	$version     = 'v1.3';
+	$version     = 'v1.31';
 	$color       = 'steelblue';
 	$pdo         = new PDO('sqlite:db/cevsen.db');
 	$rows_cevsen = $pdo->query('SELECT * FROM fkl_cevsen');
-
 ?>
 <!DOCTYPE html>
 <html lang="ar">
