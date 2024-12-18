@@ -88,7 +88,7 @@
 		<div class="arabic" id="arabic">
 			<div id="jawshan" class="tabcontent open">
 				<h4 class="sn">Cevşen-i Kebir</h4>
-				<p class="basmala">بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ</p>
+				<p class="basmala">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 				<ul id="p1">
 				<?php
 				foreach($rows_cevsen as $row):
