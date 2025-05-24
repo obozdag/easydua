@@ -121,7 +121,7 @@
 			<div id="dualar" class="tabcontent"></div>
 		</div>
 	</div>
-	<footer><a target="_blank" href="https://github.com/obozdag/dua"><i class="logo rb-hands-praying-solid" title="Easy Dua"></i> Easy Dua</a></footer>
+	<footer><a target="_blank" href="https://github.com/obozdag/dua"><i class="logo rb-hands-praying-solid" title="Easy Dua"></i> Easy Dua <?= $version ?></a></footer>
 	<div class="overlay" id="program_info_popup">
 		<div class="popup">
 			<i id="close_popup_btn" class="close_btn right rb-circle-xmark"></i>
