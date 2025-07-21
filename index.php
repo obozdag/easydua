@@ -17,6 +17,14 @@
 	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css">
 	<link rel="apple-touch-icon" href="/css/icons/easy_dua_96x96.png">
 	<link rel="manifest" href="easy_dua.json">
+	<script type="text/javascript">
+		var version = '<?= $version ?>'
+	</script>
+	<script src="/js/swipe.js"></script>
+	<script src="/js/lang.js"></script>
+	<script src="/js/settings.js"></script>
+	<script src="/js/easy_dua.js"></script>
+	<script src="/app.js"></script>
 </head>
 <body>
 	<div id="loading_overlay">
@@ -130,11 +138,5 @@
 			</div>
 		</div>
 	</div>
-	<script src="/js/swipe.js"></script>
-	<script src="/js/lang.js"></script>
-	<script src="/js/settings.js"></script>
-	<script src="/js/easy_dua.js"></script>
-	<script src="/app.js"></script>
-	<!--index.php-->
 </body>
 </html>
