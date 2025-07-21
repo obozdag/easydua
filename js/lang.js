@@ -41,7 +41,7 @@ translations = {
 	'duas'                   : {
 			'jawshan':"Jawshan",
 			'ismi_azam':"Ism Azam",
-			'tercumani_ismi_azam':"Ism Azam 2",
+			'tercumani_ismi_azam':"Tercuman Ism Azam",
 			'munacati_veysel_karani':"Dua Veysel Karani",
 			'sekine':"Sekine",
 			'tefriciye':"Salaat Tafrijiyah",
