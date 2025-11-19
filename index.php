@@ -1,5 +1,6 @@
 <?php
-	$version     = 'v1.3.34';
+	$prg_name    = 'Easy Dua';
+	$version     = 'v1.3.37';
 	$color       = 'steelblue';
 	$pdo         = new PDO('sqlite:db/cevsen.db');
 	$rows_cevsen = $pdo->query('SELECT * FROM fkl_cevsen');
@@ -18,7 +19,8 @@
 	<link rel="apple-touch-icon" href="/css/icons/easy_dua_96x96.png">
 	<link rel="manifest" href="easy_dua.json">
 	<script type="text/javascript">
-		var version = '<?= $version ?>'
+		var prg_name = '<?= $prg_name ?>';
+		var version  = '<?= $version ?>';
 	</script>
 	<script src="/js/swipe.js"></script>
 	<script src="/js/lang.js"></script>
@@ -128,15 +130,19 @@
 			<div id="suhedai_uhud" class="tabcontent"></div>
 			<div id="dualar" class="tabcontent"></div>
 		</div>
-	</div>
-	<footer><a target="_blank" href="https://github.com/obozdag/dua"><i class="logo rb-hands-praying-solid" title="Easy Dua"></i> Easy Dua <?= $version ?></a></footer>
-	<div class="overlay" id="program_info_popup">
-		<div class="popup">
-			<i id="close_popup_btn" class="close_btn right rb-circle-xmark"></i>
-			<h3><i class="rb-hands-praying-solid logo"></i> Easy Dua <?= $version ?></h3>
-			<div id="program_info_content">
+		<div class="overlay" id="program_info_popup">
+			<div class="popup">
+				<i id="close_popup_btn" class="close_btn right rb-circle-xmark"></i>
+				<h3><i class="logo rb-hands-praying-solid"></i> <?= $prg_name ?></h3>
+				<div id="program_info_content"></div>
 			</div>
 		</div>
 	</div>
+	<footer>
+		<a target="_blank" href="https://github.com/obozdag/dua">
+			<i class="logo rb-hands-praying-solid" title="<?= $prg_name ?>"></i>
+			<?= $prg_name.' '.$version ?>
+		</a>
+	</footer>
 </body>
 </html>

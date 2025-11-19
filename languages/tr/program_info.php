@@ -32,4 +32,5 @@
 </ul>
 <p><small>Özellik ekleme isteği veya hata bildirimi için lütfen info at fklavye nokta net adresine email gönderiniz.</small></p>
 <p><small>Bu açık kaynak kodlu bir projedir. <a target="_blank" href="https://github.com/obozdag/dua">github</a> üzerinden katkıda bulunabilirsiniz.</small></p>
-<h4><a target="_blank" href="https://quran.fklavye.net"><i class="rb-easyquran-solid logo"></i> Easy Quran</a> kolay Kuran okuma programı.</h4>
+<p><small><a target="_blank" href="https://quran.fklavye.net"><i class="rb-easyquran-solid logo"></i> Easy Quran</a> kolay Kuran okuma programı.</small></p>
+<p><small><a target="_blank" href="https://prayer.fklavye.net" style="color: var(--set-color);"><i class="logo rb-call-prayer-solid"></i> Easy Prayer</a> namaz vakitlerini görebileceğiniz bir program.</small></p>

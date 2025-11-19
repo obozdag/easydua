@@ -32,4 +32,5 @@
 </ul>
 <p><small>For feature requests or any bug reports please send email to info at fklavye dot net</small></p>
 <p><small>That is an open source project. You can contribute on <a target="_blank" href="https://github.com/obozdag/dua">github</a></small></p>
-<h4><a target="_blank" href="https://quran.fklavye.net"><i class="rb-easyquran-solid logo"></i> Easy Quran</a> is another open source project to easily read Quran</h4>
+<p><small><a target="_blank" href="https://quran.fklavye.net"><i class="rb-easyquran-solid logo"></i> Easy Quran</a> is another open source project to easily read Quran.</small></p>
+<p><small><a target="_blank" href="https://prayer.fklavye.net" style="color: var(--set-color);"><i class="logo rb-call-prayer-solid"></i> Easy Prayer</a> is another open source project to see prayer times.</small></p>

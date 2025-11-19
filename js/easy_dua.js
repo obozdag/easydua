@@ -418,7 +418,7 @@ window.onload = () => {
 	async function fetchLangHTML(language, file)
 	{
 		result = ''
-		path = 'languages/' + language + '/' + file + '.html?' + Date.now()
+		path = 'languages/' + language + '/' + file + '.php?' + Date.now()
 		await fetch(path).then(data => data.text()).then(html => {result = html})
 		return result
 	}
