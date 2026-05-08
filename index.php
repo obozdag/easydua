@@ -1,6 +1,6 @@
 <?php
 	$prg_name    = 'Easy Dua';
-	$version     = 'v1.3.37';
+	$version     = 'v1.3.39';
 	$color       = 'steelblue';
 	$pdo         = new PDO('sqlite:db/cevsen.db');
 	$rows_cevsen = $pdo->query('SELECT * FROM fkl_cevsen');
