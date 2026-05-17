@@ -1,5 +1,6 @@
-const version = new URL(self.location.href).searchParams.get('v') ?? '1.4.0';
-const CACHE_NAME = `easy-dua-v${version}`;
+const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.0';
+const APP_SHELL_CACHE = `easy-dua-app-shell-v${version}`;
+const RUNTIME_CACHE = `easy-dua-runtime-v${version}`;
 
 const staticContentToCache = [
 	'app.js',
@@ -46,9 +47,25 @@ const staticContentToCache = [
 	'dua.php?slug=program_info&language=tr',
 ];
 
+function isAppShellRequest(request)
+{
+	if (request.mode === 'navigate') {
+		return true;
+	}
+
+	const url = new URL(request.url);
+	return url.origin === self.location.origin && staticContentToCache.includes(url.pathname.slice(1) + url.search);
+}
+
+function normalizeCacheKey(request)
+{
+	const url = new URL(request.url);
+	return `${url.pathname.slice(1)}${url.search}`;
+}
+
 self.addEventListener('install', event => {
 	event.waitUntil(
-		caches.open(CACHE_NAME)
+		caches.open(APP_SHELL_CACHE)
 			.then(cache => Promise.all(
 				staticContentToCache.map(file => {
 					return cache.add(file).catch(error => {
@@ -65,11 +82,17 @@ self.addEventListener('activate', event => {
 		caches.keys()
 			.then(keys => Promise.all(
 				keys
-					.filter(key => key !== CACHE_NAME)
+					.filter(key => key !== APP_SHELL_CACHE && key !== RUNTIME_CACHE)
 					.map(key => caches.delete(key)),
 			))
 			.then(() => self.clients.claim()),
 	);
+});
+
+self.addEventListener('message', event => {
+	if (event.data?.type === 'SKIP_WAITING') {
+		self.skipWaiting();
+	}
 });
 
 self.addEventListener('fetch', event => {
@@ -77,22 +100,52 @@ self.addEventListener('fetch', event => {
 		return;
 	}
 
-	event.respondWith(
-		caches.match(event.request).then(cacheResponse => {
-			if (cacheResponse) {
-				return cacheResponse;
-			}
+	if (isAppShellRequest(event.request)) {
+		event.respondWith(
+			caches.open(APP_SHELL_CACHE).then(async cache => {
+				const cacheKey = normalizeCacheKey(event.request);
+				const cachedResponse = await cache.match(cacheKey);
 
-			return fetch(event.request).catch(() => {
-				if (event.request.mode === 'navigate') {
-					return caches.match('index.php');
+				if (cachedResponse) {
+					return cachedResponse;
+				}
+
+				try {
+					const response = await fetch(event.request);
+					cache.put(cacheKey, response.clone());
+					return response;
+				} catch (error) {
+					if (event.request.mode === 'navigate') {
+						return cache.match('index.php');
+					}
+
+					return new Response('', {
+						status: 503,
+						statusText: 'Offline',
+					});
+				}
+			}),
+		);
+		return;
+	}
+
+	event.respondWith(
+		caches.open(RUNTIME_CACHE).then(async cache => {
+			try {
+				const response = await fetch(event.request);
+				cache.put(event.request, response.clone());
+				return response;
+			} catch (error) {
+				const cachedResponse = await cache.match(event.request);
+				if (cachedResponse) {
+					return cachedResponse;
 				}
 
 				return new Response('', {
 					status: 503,
 					statusText: 'Offline',
 				});
-			});
+			}
 		}),
 	);
 });

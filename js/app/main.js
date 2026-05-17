@@ -74,6 +74,7 @@ async function applyLanguage(elements, language)
 	state.currentLanguage = Object.hasOwn(languages, language) ? language : 'en';
 	elements.languageList.value = state.currentLanguage;
 	applyLabels(elements, getLabels(state.currentLanguage));
+	applyUpdateBannerLabels();
 	renderTabLinks(elements.duaList, getLabels(state.currentLanguage).duas, tabId => {
 		state.currentTab = tabId;
 		openTab(elements, tabId);
@@ -180,6 +181,21 @@ async function loadTabs(elements)
 function renderLoadError(message)
 {
 	return `<div class="latin"><p class="content_notice">${message}</p></div>`;
+}
+
+function applyUpdateBannerLabels()
+{
+	const labels = getLabels(state.currentLanguage);
+	const text = document.getElementById('update_banner_text');
+	const button = document.getElementById('update_banner_reload');
+
+	if (text) {
+		text.textContent = labels.update_available;
+	}
+
+	if (button) {
+		button.textContent = labels.reload_update;
+	}
 }
 
 function addBookmark(elements, bookmarkTarget, bookmarkLabel)

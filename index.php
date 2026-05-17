@@ -50,6 +50,10 @@
 			<p>dua.fklavye.net</p>
 		</div>
 	</div>
+	<div id="update_banner" class="update_banner" hidden>
+		<span id="update_banner_text"></span>
+		<button type="button" id="update_banner_reload" class="btn update_banner_btn"></button>
+	</div>
 	<nav id="nav_top">
 		<i id="open_nav_left" class="nav_top_btn rb-book-quran" title="Nav Left"></i>
 		<i id="program_info_btn" class="nav_top_btn rb-hands-praying-solid" title="Program Info"></i>

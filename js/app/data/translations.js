@@ -14,6 +14,8 @@ export const translations = {
 		settings_header: 'Ayarlar',
 		content_load_error: 'İçerik yüklenemedi.',
 		program_info_load_error: 'Program bilgisi yüklenemedi.',
+		update_available: 'Yeni sürüm hazır.',
+		reload_update: 'Yenile',
 		duas: {
 			jawshan: 'Cevşen',
 			ismi_azam: 'İsmi Azam',
@@ -41,6 +43,8 @@ export const translations = {
 		settings_header: 'Settings',
 		content_load_error: 'Content could not be loaded.',
 		program_info_load_error: 'Program info could not be loaded.',
+		update_available: 'A new version is ready.',
+		reload_update: 'Reload',
 		duas: {
 			jawshan: 'Jawshan',
 			ismi_azam: 'Ism Azam',
