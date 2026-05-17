@@ -167,7 +167,7 @@ async function loadTabs(elements)
 	const entries = Object.keys(duas).filter(dua => dua !== 'jawshan');
 
 	await Promise.all(entries.map(async dua => {
-		const html = await loadText(`dua.php?slug=${encodeURIComponent(dua)}`);
+		const html = await loadText(`dua.php?slug=${encodeURIComponent(dua)}&language=ar`);
 		const target = document.getElementById(dua);
 		if (!target) {
 			return;
@@ -241,7 +241,7 @@ function resetSettings(elements)
 async function openInfoPopup(elements)
 {
 	closePanels(elements);
-	const html = await loadText(`languages/${state.currentLanguage}/program_info.php`);
+	const html = await loadText(`dua.php?slug=program_info&language=${encodeURIComponent(state.currentLanguage)}`);
 	elements.programInfoContent.innerHTML = html ?? renderLoadError(getLabels(state.currentLanguage).program_info_load_error);
 	elements.programInfoPopup.classList.add('open');
 }

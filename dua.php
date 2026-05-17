@@ -7,6 +7,7 @@ require_once __DIR__ . '/source/database.php';
 header('Content-Type: text/html; charset=utf-8');
 
 $slug = $_GET['slug'] ?? '';
+$language = $_GET['language'] ?? 'ar';
 
 if (!is_string($slug) || preg_match('/^[a-z_]+$/', $slug) !== 1) {
 	http_response_code(400);
@@ -14,8 +15,14 @@ if (!is_string($slug) || preg_match('/^[a-z_]+$/', $slug) !== 1) {
 	exit;
 }
 
+if (!is_string($language) || preg_match('/^[a-z]{2}$/', $language) !== 1) {
+	http_response_code(400);
+	echo '<div class="latin"><p class="content_notice">Invalid language request.</p></div>';
+	exit;
+}
+
 try {
-	$content = get_dua_content(get_database_connection(), $slug);
+	$content = get_dua_content(get_database_connection(), $slug, $language);
 } catch (Throwable $exception) {
 	http_response_code(500);
 	echo '<div class="latin"><p class="content_notice">Dua content could not be loaded.</p></div>';

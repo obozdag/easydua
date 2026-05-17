@@ -20,28 +20,90 @@ function get_database_connection(): PDO
 
 function ensure_dua_content_schema(PDO $pdo): void
 {
+	$tableExists = $pdo->query("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'dua_contents'")->fetch() !== false;
+
+	if (!$tableExists) {
+		create_dua_content_table($pdo);
+		return;
+	}
+
+	$columns = $pdo->query('PRAGMA table_info(dua_contents)')->fetchAll();
+	$columnNames = array_column($columns, 'name');
+	$needsMigration = !in_array('language', $columnNames, true);
+
+	if (!$needsMigration) {
+		$indexes = $pdo->query('PRAGMA index_list(dua_contents)')->fetchAll();
+		foreach ($indexes as $index) {
+			if (($index['name'] ?? '') === 'sqlite_autoindex_dua_contents_1' && (int) ($index['unique'] ?? 0) === 1) {
+				$needsMigration = true;
+				break;
+			}
+		}
+	}
+
+	if ($needsMigration) {
+		migrate_dua_content_table($pdo, $columnNames);
+	}
+
+	$pdo->exec('DROP INDEX IF EXISTS dua_contents_slug_language_idx');
+	$pdo->exec('CREATE UNIQUE INDEX IF NOT EXISTS dua_contents_slug_language_idx ON dua_contents (slug, language)');
+}
+
+function create_dua_content_table(PDO $pdo): void
+{
 	$pdo->exec(
-		'CREATE TABLE IF NOT EXISTS dua_contents (
+		'CREATE TABLE dua_contents (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			slug TEXT NOT NULL UNIQUE,
+			slug TEXT NOT NULL,
+			language TEXT NOT NULL DEFAULT "ar",
 			sort_order INTEGER NOT NULL,
 			content_html TEXT NOT NULL,
 			updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 		)'
 	);
+	$pdo->exec('DROP INDEX IF EXISTS dua_contents_slug_language_idx');
+	$pdo->exec('CREATE UNIQUE INDEX dua_contents_slug_language_idx ON dua_contents (slug, language)');
 }
 
-function get_dua_content(PDO $pdo, string $slug): ?array
+function migrate_dua_content_table(PDO $pdo, array $columnNames): void
+{
+	$pdo->beginTransaction();
+
+	try {
+		$pdo->exec('ALTER TABLE dua_contents RENAME TO dua_contents_legacy');
+		create_dua_content_table($pdo);
+
+		$hasLanguageColumn = in_array('language', $columnNames, true);
+		$selectLanguage = $hasLanguageColumn ? 'language' : '"ar"';
+
+		$pdo->exec(
+			'INSERT INTO dua_contents (id, slug, language, sort_order, content_html, updated_at)
+			 SELECT id, slug, ' . $selectLanguage . ', sort_order, content_html, updated_at
+			 FROM dua_contents_legacy'
+		);
+
+		$pdo->exec('DROP TABLE dua_contents_legacy');
+		$pdo->commit();
+	} catch (Throwable $exception) {
+		$pdo->rollBack();
+		throw $exception;
+	}
+}
+
+function get_dua_content(PDO $pdo, string $slug, string $language = 'ar'): ?array
 {
 	ensure_dua_content_schema($pdo);
 
 	$statement = $pdo->prepare(
-		'SELECT slug, sort_order, content_html, updated_at
+		'SELECT slug, language, sort_order, content_html, updated_at
 		 FROM dua_contents
-		 WHERE slug = :slug
+		 WHERE slug = :slug AND language = :language
 		 LIMIT 1'
 	);
-	$statement->execute(['slug' => $slug]);
+	$statement->execute([
+		'slug' => $slug,
+		'language' => $language,
+	]);
 
 	$result = $statement->fetch();
 	return $result === false ? null : $result;
