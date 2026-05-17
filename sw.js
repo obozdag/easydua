@@ -1,12 +1,12 @@
-// $version     = 'v1.3.39';
-var version
-var staticContentToCache = [
+const CACHE_NAME = 'easy-dua-v1.3.39';
+
+const staticContentToCache = [
 	'app.js',
 	'css/easy_dua.css',
 	'css/fonts.css',
 	'css/fonts/EasyArabic.ttf',
 	'css/fonts/Lateef.ttf',
-	'css/fonts/rb.ttf',
+	'css/fonts/rb.woff',
 	'css/icons/easy_dua_128x128.png',
 	'css/icons/easy_dua_144x144.png',
 	'css/icons/easy_dua_152x152.png',
@@ -29,45 +29,69 @@ var staticContentToCache = [
 	'duas/tefriciye.html',
 	'duas/tercumani_ismi_azam.html',
 	'favicon.ico',
+	'easy_dua.json',
 	'images/flower.png',
 	'images/lavender.png',
 	'images/liltree.png',
 	'index.php',
-	'js/easy_dua.js',
-	'js/lang.js',
-	'js/settings.js',
+	'js/app/data/settings.js',
+	'js/app/data/translations.js',
+	'js/app/main.js',
+	'js/app/services/content.js',
+	'js/app/services/storage.js',
+	'js/app/ui.js',
 	'js/swipe.js',
 	'languages/en/program_info.php',
 	'languages/tr/program_info.php',
 ];
 
-// Installing Service Worker
-self.addEventListener('install', evt => {
-	evt.waitUntil(
-		caches.open(cacheName).then(cache => {
-			return staticContentToCache.forEach(function(file){
-				cache.add(file).catch(err => console.log(err+file))
-			})
-		})
-		.then(function(){return self.skipWaiting()})
-	)})
+self.addEventListener('install', event => {
+	event.waitUntil(
+		caches.open(CACHE_NAME)
+			.then(cache => Promise.all(
+				staticContentToCache.map(file => {
+					return cache.add(file).catch(error => {
+						console.error(`Failed to cache ${file}`, error);
+					});
+				}),
+			))
+			.then(() => self.skipWaiting()),
+	);
+});
 
-// Activating Service Worker
-self.addEventListener('activate', evt => {
-	evt.waitUntil(
-		caches.keys().then(keys => {
-			return Promise.all(keys
-				.filter(key => key !== cacheName)
-				.map(key => caches.delete(key))
-			)
-	}))})
+self.addEventListener('activate', event => {
+	event.waitUntil(
+		caches.keys()
+			.then(keys => Promise.all(
+				keys
+					.filter(key => key !== CACHE_NAME)
+					.map(key => caches.delete(key)),
+			))
+			.then(() => self.clients.claim()),
+	);
+});
 
+self.addEventListener('fetch', event => {
+	if (event.request.method !== 'GET') {
+		return;
+	}
 
-// Fetching content using Service Worker
-self.addEventListener('fetch', evt => {
-	evt.respondWith(
-		caches.match(evt.request).then(
-			cacheResponse => {
-				return cacheResponse || fetch(evt.request);
-		}))
-	})
+	event.respondWith(
+		caches.match(event.request).then(cacheResponse => {
+			if (cacheResponse) {
+				return cacheResponse;
+			}
+
+			return fetch(event.request).catch(() => {
+				if (event.request.mode === 'navigate') {
+					return caches.match('index.php');
+				}
+
+				return new Response('', {
+					status: 503,
+					statusText: 'Offline',
+				});
+			});
+		}),
+	);
+});

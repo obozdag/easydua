@@ -2,8 +2,18 @@
 	$prg_name    = 'Easy Dua';
 	$version     = 'v1.3.39';
 	$color       = 'steelblue';
-	$pdo         = new PDO('sqlite:db/cevsen.db');
-	$rows_cevsen = $pdo->query('SELECT * FROM fkl_cevsen');
+	$db_error    = null;
+	$rows_cevsen = [];
+
+	try {
+		$pdo = new PDO('sqlite:db/cevsen.db', null, null, [
+			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+		]);
+		$rows_cevsen = $pdo->query('SELECT * FROM fkl_cevsen')->fetchAll();
+	} catch (Throwable $exception) {
+		$db_error = 'Main prayer content could not be loaded. Ana dua icerigi yuklenemedi.';
+	}
 ?>
 <!DOCTYPE html>
 <html lang="ar">
@@ -23,10 +33,8 @@
 		var version  = '<?= $version ?>';
 	</script>
 	<script src="/js/swipe.js"></script>
-	<script src="/js/lang.js"></script>
-	<script src="/js/settings.js"></script>
-	<script src="/js/easy_dua.js"></script>
 	<script src="/app.js"></script>
+	<script type="module" src="/js/app/main.js"></script>
 </head>
 <body>
 	<div id="loading_overlay">
@@ -98,6 +106,11 @@
 		<div class="arabic" id="arabic">
 			<div id="jawshan" class="tabcontent open">
 				<h4 class="sn">Cevşen-i Kebir</h4>
+				<?php if ($db_error !== null): ?>
+				<div class="latin">
+					<p class="content_notice"><?= htmlspecialchars($db_error, ENT_QUOTES, 'UTF-8') ?></p>
+				</div>
+				<?php else: ?>
 				<p class="basmala">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحٖيمِ</p>
 				<ul id="p1">
 				<?php
@@ -120,6 +133,7 @@
 					<?php	endif; ?>
 				<?php	endforeach; ?>
 				</ul>
+				<?php endif; ?>
 			</div>
 			<div id="ismi_azam" class="tabcontent"></div>
 			<div id="tercumani_ismi_azam" class="tabcontent"></div>

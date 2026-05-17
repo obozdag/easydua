@@ -70,6 +70,15 @@ html {
 .small {
 	font-size: .7rem;
 }
+.content_notice {
+	margin: 1rem;
+	padding: 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: var(--brs);
+	background-color: rgba(255, 255, 255, 0.75);
+	line-height: 1.6;
+	text-align: left;
+}
 .arabic ul {
 	list-style: none;
 	margin-bottom: 2rem;
