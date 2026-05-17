@@ -167,7 +167,7 @@ async function loadTabs(elements)
 	const entries = Object.keys(duas).filter(dua => dua !== 'jawshan');
 
 	await Promise.all(entries.map(async dua => {
-		const html = await loadText(`duas/${dua}.html`);
+		const html = await loadText(`dua.php?slug=${encodeURIComponent(dua)}`);
 		const target = document.getElementById(dua);
 		if (!target) {
 			return;

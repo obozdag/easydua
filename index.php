@@ -1,4 +1,6 @@
 <?php
+	require_once __DIR__ . '/source/database.php';
+
 	$prg_name    = 'Easy Dua';
 	$version     = 'v1.3.39';
 	$color       = 'steelblue';
@@ -6,10 +8,8 @@
 	$rows_cevsen = [];
 
 	try {
-		$pdo = new PDO('sqlite:db/cevsen.db', null, null, [
-			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-		]);
+		$pdo = get_database_connection();
+		ensure_dua_content_schema($pdo);
 		$rows_cevsen = $pdo->query('SELECT * FROM fkl_cevsen')->fetchAll();
 	} catch (Throwable $exception) {
 		$db_error = 'Main prayer content could not be loaded. Ana dua icerigi yuklenemedi.';
