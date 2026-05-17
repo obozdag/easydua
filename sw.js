@@ -1,4 +1,5 @@
-const CACHE_NAME = 'easy-dua-v1.3.39';
+const version = new URL(self.location.href).searchParams.get('v') ?? '1.4.0';
+const CACHE_NAME = `easy-dua-v${version}`;
 
 const staticContentToCache = [
 	'app.js',

@@ -1,8 +1,10 @@
 <?php
+	$app_config = require __DIR__ . '/source/app_config.php';
 	require_once __DIR__ . '/source/database.php';
 
-	$prg_name    = 'Easy Dua';
-	$version     = 'v1.3.39';
+	$prg_name    = $app_config['program_name'];
+	$version     = $app_config['version'];
+	$version_tag = 'v' . $version;
 	$color       = 'steelblue';
 	$db_error    = null;
 	$rows_cevsen = [];
@@ -29,8 +31,11 @@
 	<link rel="apple-touch-icon" href="/css/icons/easy_dua_96x96.png">
 	<link rel="manifest" href="easy_dua.json">
 	<script type="text/javascript">
-		var prg_name = '<?= $prg_name ?>';
-		var version  = '<?= $version ?>';
+		window.appConfig = {
+			programName: '<?= htmlspecialchars($prg_name, ENT_QUOTES, 'UTF-8') ?>',
+			version: '<?= htmlspecialchars($version, ENT_QUOTES, 'UTF-8') ?>',
+			versionLabel: '<?= htmlspecialchars($version_tag, ENT_QUOTES, 'UTF-8') ?>'
+		};
 	</script>
 	<script src="/js/swipe.js"></script>
 	<script src="/app.js"></script>
@@ -155,7 +160,7 @@
 	<footer>
 		<a target="_blank" href="https://github.com/obozdag/dua">
 			<i class="logo rb-hands-praying-solid" title="<?= $prg_name ?>"></i>
-			<?= $prg_name.' '.$version ?>
+			<?= $prg_name . ' ' . $version_tag ?>
 		</a>
 	</footer>
 </body>
