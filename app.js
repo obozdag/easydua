@@ -1,18 +1,26 @@
 if ('serviceWorker' in navigator)
 {
-	const version = window.appConfig?.version ?? '1.4.0';
-	const updateBanner = document.getElementById('update_banner');
-	const updateBannerReload = document.getElementById('update_banner_reload');
+	const version = window.appConfig?.version ?? '1.5.1';
 	let refreshing = false;
+
+	function getUpdateBannerElements()
+	{
+		return {
+			banner: document.getElementById('update_banner'),
+			reloadButton: document.getElementById('update_banner_reload'),
+		};
+	}
 
 	function showUpdateBanner(worker)
 	{
-		if (!updateBanner || !updateBannerReload) {
+		const { banner, reloadButton } = getUpdateBannerElements();
+
+		if (!banner || !reloadButton) {
 			return;
 		}
 
-		updateBanner.hidden = false;
-		updateBannerReload.onclick = () => {
+		banner.hidden = false;
+		reloadButton.onclick = () => {
 			worker.postMessage({ type: 'SKIP_WAITING' });
 		};
 	}
@@ -39,25 +47,34 @@ if ('serviceWorker' in navigator)
 		window.location.reload();
 	});
 
-	navigator.serviceWorker.register(`/sw.js?v=${encodeURIComponent(version)}`).then(registration => {
-		console.log('serviceWorker registered. Scope: ', registration.scope);
+	function registerServiceWorker()
+	{
+		navigator.serviceWorker.register(`/sw.js?v=${encodeURIComponent(version)}`).then(registration => {
+			console.log('serviceWorker registered. Scope: ', registration.scope);
 
-		if (registration.waiting) {
-			showUpdateBanner(registration.waiting);
-		}
+			if (registration.waiting) {
+				showUpdateBanner(registration.waiting);
+			}
 
-		trackInstallingWorker(registration.installing);
-
-		registration.addEventListener('updatefound', () => {
 			trackInstallingWorker(registration.installing);
-		});
 
-		window.setInterval(() => {
-			registration.update().catch(error => {
-				console.log('serviceWorker update check failed', error);
+			registration.addEventListener('updatefound', () => {
+				trackInstallingWorker(registration.installing);
 			});
-		}, 60 * 60 * 1000);
-	}).catch(err => {
-		console.log('serviceWorker not registered', err);
-	});
+
+			window.setInterval(() => {
+				registration.update().catch(error => {
+					console.log('serviceWorker update check failed', error);
+				});
+			}, 60 * 60 * 1000);
+		}).catch(err => {
+			console.log('serviceWorker not registered', err);
+		});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', registerServiceWorker, { once: true });
+	} else {
+		registerServiceWorker();
+	}
 }

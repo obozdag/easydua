@@ -1,4 +1,4 @@
-const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.0';
+const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.1';
 const APP_SHELL_CACHE = `easy-dua-app-shell-v${version}`;
 const RUNTIME_CACHE = `easy-dua-runtime-v${version}`;
 

@@ -433,6 +433,9 @@ footer .logo {
 	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 	z-index: 250;
 }
+.update_banner[hidden] {
+	display: none;
+}
 .update_banner_btn {
 	padding: .4rem .75rem;
 	border: 1px solid rgba(255, 255, 255, 0.65);
