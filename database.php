@@ -30,13 +30,17 @@ function ensure_dua_content_schema(PDO $pdo): void
 	$columns = $pdo->query('PRAGMA table_info(dua_contents)')->fetchAll();
 	$columnNames = array_column($columns, 'name');
 	$needsMigration = !in_array('language', $columnNames, true);
+	$hasSlugLanguageIndex = false;
 
-	if (!$needsMigration) {
-		$indexes = $pdo->query('PRAGMA index_list(dua_contents)')->fetchAll();
-		foreach ($indexes as $index) {
+	$indexes = $pdo->query('PRAGMA index_list(dua_contents)')->fetchAll();
+	foreach ($indexes as $index) {
+		if (($index['name'] ?? '') === 'dua_contents_slug_language_idx' && (int) ($index['unique'] ?? 0) === 1) {
+			$hasSlugLanguageIndex = true;
+		}
+
+		if (!$needsMigration) {
 			if (($index['name'] ?? '') === 'sqlite_autoindex_dua_contents_1' && (int) ($index['unique'] ?? 0) === 1) {
 				$needsMigration = true;
-				break;
 			}
 		}
 	}
@@ -45,8 +49,9 @@ function ensure_dua_content_schema(PDO $pdo): void
 		migrate_dua_content_table($pdo, $columnNames);
 	}
 
-	$pdo->exec('DROP INDEX IF EXISTS dua_contents_slug_language_idx');
-	$pdo->exec('CREATE UNIQUE INDEX IF NOT EXISTS dua_contents_slug_language_idx ON dua_contents (slug, language)');
+	if (!$hasSlugLanguageIndex) {
+		$pdo->exec('CREATE UNIQUE INDEX IF NOT EXISTS dua_contents_slug_language_idx ON dua_contents (slug, language)');
+	}
 }
 
 function create_dua_content_table(PDO $pdo): void

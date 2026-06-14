@@ -1,4 +1,6 @@
-const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.4';
+importScripts('/app-config.php');
+
+const version = self.EASY_DUA_CONFIG?.version ?? 'dev';
 const APP_SHELL_CACHE = `easy-dua-app-shell-v${version}`;
 const RUNTIME_CACHE = `easy-dua-runtime-v${version}`;
 
@@ -69,16 +71,51 @@ function isCacheableRequest(request)
 	return url.protocol === 'http:' || url.protocol === 'https:';
 }
 
+function canStoreResponse(response)
+{
+	return response && response.ok;
+}
+
+function storeResponse(cache, key, response)
+{
+	if (canStoreResponse(response)) {
+		cache.put(key, response.clone()).catch(() => {});
+	}
+}
+
+async function warmAppShellCache(cache)
+{
+	await Promise.allSettled(staticContentToCache.map(async file => {
+		const response = await fetch(file, { cache: 'reload' });
+
+		if (canStoreResponse(response)) {
+			await cache.put(file, response);
+		}
+	}));
+}
+
+async function handleNavigation(request)
+{
+	const cache = await caches.open(APP_SHELL_CACHE);
+
+	try {
+		const response = await fetch(request);
+		storeResponse(cache, 'index.php', response);
+		return response;
+	} catch (error) {
+		const cachedResponse = await cache.match('index.php');
+		return cachedResponse ?? new Response('', {
+			status: 503,
+			statusText: 'Offline',
+		});
+	}
+}
+
 self.addEventListener('install', event => {
 	event.waitUntil(
 		caches.open(APP_SHELL_CACHE)
-			.then(cache => Promise.all(
-				staticContentToCache.map(file => {
-					return cache.add(file).catch(error => {
-						console.error(`Failed to cache ${file}`, error);
-					});
-				}),
-			)),
+			.then(cache => warmAppShellCache(cache))
+			.then(() => self.skipWaiting()),
 	);
 });
 
@@ -109,6 +146,11 @@ self.addEventListener('fetch', event => {
 		return;
 	}
 
+	if (event.request.mode === 'navigate') {
+		event.respondWith(handleNavigation(event.request));
+		return;
+	}
+
 	if (isAppShellRequest(event.request)) {
 		event.respondWith(
 			caches.open(APP_SHELL_CACHE).then(async cache => {
@@ -121,13 +163,9 @@ self.addEventListener('fetch', event => {
 
 				try {
 					const response = await fetch(event.request);
-					cache.put(cacheKey, response.clone());
+					storeResponse(cache, cacheKey, response);
 					return response;
 				} catch (error) {
-					if (event.request.mode === 'navigate') {
-						return cache.match('index.php');
-					}
-
 					return new Response('', {
 						status: 503,
 						statusText: 'Offline',
@@ -142,7 +180,7 @@ self.addEventListener('fetch', event => {
 		caches.open(RUNTIME_CACHE).then(async cache => {
 			try {
 				const response = await fetch(event.request);
-				cache.put(event.request, response.clone());
+				storeResponse(cache, event.request, response);
 				return response;
 			} catch (error) {
 				const cachedResponse = await cache.match(event.request);

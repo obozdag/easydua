@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator)
 {
-	const version = window.appConfig?.version ?? '1.5.4';
+	const version = window.appConfig?.version ?? String(Date.now());
 	let refreshing = false;
 
 	function getUpdateBannerElements()
@@ -67,8 +67,8 @@ if ('serviceWorker' in navigator)
 					console.log('serviceWorker update check failed', error);
 				});
 			}, 60 * 60 * 1000);
-		}).catch(err => {
-			console.log('serviceWorker not registered', err);
+		}).catch(error => {
+			console.warn('serviceWorker not registered', error);
 		});
 	}
 

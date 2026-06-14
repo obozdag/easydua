@@ -1,4 +1,4 @@
-# Easy Dua v1.5.4
+# Easy Dua
 Easy Dua is a progressive web application. You can read on web page and install on your mobile device.
 
 After installing without internet connection it can run offline.

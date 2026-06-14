@@ -1,10 +1,14 @@
 <?php
 	require_once __DIR__ . '/database.php';
 
-	$prg_name    = 'Easy Dua';
-	$version     = '1.5.4';
+	$app_config  = json_decode((string) file_get_contents(__DIR__ . '/app_config.json'), true);
+	$app_config  = is_array($app_config) ? $app_config : [];
+	$prg_name    = $app_config['programName'] ?? 'Easy Dua';
+	$version     = $app_config['version'] ?? 'dev';
 	$version_tag = 'v' . $version;
-	$color       = 'steelblue';
+	$color       = $app_config['color'] ?? 'steelblue';
+	$canonical   = $app_config['canonicalUrl'] ?? 'https://dua.fklavye.net';
+	$repository  = $app_config['repositoryUrl'] ?? 'https://github.com/obozdag/dua';
 	$db_error    = null;
 	$rows_cevsen = [];
 
@@ -25,7 +29,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-status-bar" content="<?= $color ?>">
 	<meta name="theme-color" content="<?= $color ?>">
-	<link rel="canonical" href="https://dua.fklavye.net">
+	<link rel="canonical" href="<?= htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') ?>">
 	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css">
 	<link rel="apple-touch-icon" href="/css/icons/easy_dua_96x96.png">
 	<link rel="manifest" href="easy_dua.json">
@@ -161,7 +165,7 @@
 		</div>
 	</div>
 	<footer>
-		<a target="_blank" href="https://github.com/obozdag/dua">
+		<a target="_blank" href="<?= htmlspecialchars($repository, ENT_QUOTES, 'UTF-8') ?>">
 			<i class="logo rb-hands-praying-solid" title="<?= $prg_name ?>"></i>
 			<?= $prg_name . ' ' . $version_tag ?>
 		</a>
