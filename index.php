@@ -2,7 +2,7 @@
 	require_once __DIR__ . '/database.php';
 
 	$prg_name    = 'Easy Dua';
-	$version     = '1.5.3';
+	$version     = '1.5.4';
 	$version_tag = 'v' . $version;
 	$color       = 'steelblue';
 	$db_error    = null;

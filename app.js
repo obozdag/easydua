@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator)
 {
-	const version = window.appConfig?.version ?? '1.5.3';
+	const version = window.appConfig?.version ?? '1.5.4';
 	let refreshing = false;
 
 	function getUpdateBannerElements()

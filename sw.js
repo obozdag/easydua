@@ -1,4 +1,4 @@
-const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.3';
+const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.4';
 const APP_SHELL_CACHE = `easy-dua-app-shell-v${version}`;
 const RUNTIME_CACHE = `easy-dua-runtime-v${version}`;
 
@@ -7,7 +7,7 @@ const staticContentToCache = [
 	'css/easy_dua.css',
 	'css/fonts.css',
 	'css/fonts/EasyArabic.ttf',
-	'css/fonts/Lateef.ttf',
+	'css/fonts/lateef.ttf',
 	'css/fonts/rb.woff',
 	'css/icons/easy_dua_128x128.png',
 	'css/icons/easy_dua_144x144.png',
