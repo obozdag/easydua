@@ -1,9 +1,8 @@
 <?php
-	$app_config = require __DIR__ . '/source/app_config.php';
-	require_once __DIR__ . '/source/database.php';
+	require_once __DIR__ . '/database.php';
 
-	$prg_name    = $app_config['program_name'];
-	$version     = $app_config['version'];
+	$prg_name    = 'Easy Dua';
+	$version     = '1.5.3';
 	$version_tag = 'v' . $version;
 	$color       = 'steelblue';
 	$db_error    = null;

@@ -10,7 +10,7 @@ function get_database_connection(): PDO
 		return $pdo;
 	}
 
-	$pdo = new PDO('sqlite:' . __DIR__ . '/../db/cevsen.db', null, null, [
+	$pdo = new PDO('sqlite:' . __DIR__ . '/db/cevsen.db', null, null, [
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 	]);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/source/database.php';
+require_once __DIR__ . '/database.php';
 
 header('Content-Type: text/html; charset=utf-8');
 
