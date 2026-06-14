@@ -1,4 +1,4 @@
-const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.1';
+const version = new URL(self.location.href).searchParams.get('v') ?? '1.5.3';
 const APP_SHELL_CACHE = `easy-dua-app-shell-v${version}`;
 const RUNTIME_CACHE = `easy-dua-runtime-v${version}`;
 
@@ -63,6 +63,12 @@ function normalizeCacheKey(request)
 	return `${url.pathname.slice(1)}${url.search}`;
 }
 
+function isCacheableRequest(request)
+{
+	const url = new URL(request.url);
+	return url.protocol === 'http:' || url.protocol === 'https:';
+}
+
 self.addEventListener('install', event => {
 	event.waitUntil(
 		caches.open(APP_SHELL_CACHE)
@@ -72,8 +78,7 @@ self.addEventListener('install', event => {
 						console.error(`Failed to cache ${file}`, error);
 					});
 				}),
-			))
-			.then(() => self.skipWaiting()),
+			)),
 	);
 });
 
@@ -97,6 +102,10 @@ self.addEventListener('message', event => {
 
 self.addEventListener('fetch', event => {
 	if (event.request.method !== 'GET') {
+		return;
+	}
+
+	if (!isCacheableRequest(event.request)) {
 		return;
 	}
 
