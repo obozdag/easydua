@@ -15,6 +15,7 @@ export const translations = {
 		content_load_error: 'İçerik yüklenemedi.',
 		program_info_load_error: 'Program bilgisi yüklenemedi.',
 		update_available: 'Yeni sürüm hazır.',
+		updating_app: 'Uygulama güncelleniyor…',
 		reload_update: 'Yenile',
 		duas: {
 			jawshan: 'Cevşen',
@@ -44,6 +45,7 @@ export const translations = {
 		content_load_error: 'Content could not be loaded.',
 		program_info_load_error: 'Program info could not be loaded.',
 		update_available: 'A new version is ready.',
+		updating_app: 'Updating app…',
 		reload_update: 'Reload',
 		duas: {
 			jawshan: 'Jawshan',

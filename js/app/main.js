@@ -187,14 +187,9 @@ function applyUpdateBannerLabels()
 {
 	const labels = getLabels(state.currentLanguage);
 	const text = document.getElementById('update_banner_text');
-	const button = document.getElementById('update_banner_reload');
 
 	if (text) {
-		text.textContent = labels.update_available;
-	}
-
-	if (button) {
-		button.textContent = labels.reload_update;
+		text.textContent = labels.updating_app ?? labels.update_available;
 	}
 }
 

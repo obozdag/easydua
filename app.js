@@ -8,22 +8,22 @@ if ('serviceWorker' in navigator)
 	{
 		return {
 			banner: document.getElementById('update_banner'),
-			reloadButton: document.getElementById('update_banner_reload'),
 		};
 	}
 
 	function showUpdateBanner(worker)
 	{
-		const { banner, reloadButton } = getUpdateBannerElements();
+		const { banner } = getUpdateBannerElements();
 
-		if (!banner || !reloadButton) {
+		if (!banner) {
 			return;
 		}
 
 		banner.hidden = false;
-		reloadButton.onclick = () => {
+
+		if (worker) {
 			worker.postMessage({ type: 'SKIP_WAITING' });
-		};
+		}
 	}
 
 	function trackInstallingWorker(worker)

@@ -30,3 +30,5 @@ That is an open source project. You can contribute on github [github](https://gi
 When the version changes, keep the manifest link, manifest icon `?v=`, app script query string, and service worker cache revision synchronized with the same version. Normal manifest icons use `purpose: "any"`, maskable icons use separate files with an opaque white canvas and safe-area padding, and the iOS touch icon remains a separate 180x180 PNG.
 
 Application content and caches update through the normal service worker flow. Existing home screen launcher icon refresh timing is controlled by Android/iOS; removing and reinstalling the shortcut should only be needed for testing or as a last resort.
+
+PWA update banner text comes from `js/app/data/translations.js`. The automatic reload flow does not show a manual Reload button; `reload_update` may remain for older manual flows, but the automatic banner uses `updating_app`.
