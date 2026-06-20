@@ -1,27 +1,33 @@
 importScripts('/app-config.php');
 
 const version = self.EASY_DUA_CONFIG?.version ?? 'dev';
+const versionQuery = `?v=${encodeURIComponent(version)}`;
 const APP_SHELL_CACHE = `easy-dua-app-shell-v${version}`;
 const RUNTIME_CACHE = `easy-dua-runtime-v${version}`;
+const EASY_DUA_CACHE_PREFIX = 'easy-dua-';
+const versionedAsset = asset => `${asset}${versionQuery}`;
 
 const staticContentToCache = [
-	'app.js',
-	'css/easy_dua.css',
+	versionedAsset('app.js'),
+	versionedAsset('css/easy_dua.css'),
 	'css/fonts.css',
 	'css/fonts/EasyArabic.ttf',
-	'css/fonts/lateef.ttf',
+	'css/fonts/Lateef.ttf',
 	'css/fonts/rb.woff',
-	'css/icons/easy_dua_128x128.png',
-	'css/icons/easy_dua_144x144.png',
-	'css/icons/easy_dua_152x152.png',
-	'css/icons/easy_dua_192x192.png',
+	versionedAsset('css/icons/apple-touch-icon.png'),
+	versionedAsset('css/icons/easy_dua_128x128.png'),
+	versionedAsset('css/icons/easy_dua_144x144.png'),
+	versionedAsset('css/icons/easy_dua_152x152.png'),
+	versionedAsset('css/icons/easy_dua_192x192.png'),
 	'css/icons/easy_dua_32x32.png',
-	'css/icons/easy_dua_384x384.png',
+	versionedAsset('css/icons/easy_dua_384x384.png'),
 	'css/icons/easy_dua_48x48.png',
-	'css/icons/easy_dua_512x512.png',
+	versionedAsset('css/icons/easy_dua_512x512.png'),
 	'css/icons/easy_dua_64x64.png',
-	'css/icons/easy_dua_72x72.png',
-	'css/icons/easy_dua_96x96.png',
+	versionedAsset('css/icons/easy_dua_72x72.png'),
+	versionedAsset('css/icons/easy_dua_96x96.png'),
+	versionedAsset('css/icons/easy_dua_maskable_192x192.png'),
+	versionedAsset('css/icons/easy_dua_maskable_512x512.png'),
 	'css/icons/loading.gif',
 	'css/rb.css',
 	'dua.php?slug=ashabi_bedir&language=ar',
@@ -33,18 +39,18 @@ const staticContentToCache = [
 	'dua.php?slug=tefriciye&language=ar',
 	'dua.php?slug=tercumani_ismi_azam&language=ar',
 	'favicon.ico',
-	'easy_dua.json',
+	versionedAsset('easy_dua.json'),
 	'images/flower.png',
 	'images/lavender.png',
 	'images/liltree.png',
 	'index.php',
 	'js/app/data/settings.js',
 	'js/app/data/translations.js',
-	'js/app/main.js',
+	versionedAsset('js/app/main.js'),
 	'js/app/services/content.js',
 	'js/app/services/storage.js',
 	'js/app/ui.js',
-	'js/swipe.js',
+	versionedAsset('js/swipe.js'),
 	'dua.php?slug=program_info&language=en',
 	'dua.php?slug=program_info&language=tr',
 ];
@@ -124,6 +130,7 @@ self.addEventListener('activate', event => {
 		caches.keys()
 			.then(keys => Promise.all(
 				keys
+					.filter(key => key.startsWith(EASY_DUA_CACHE_PREFIX))
 					.filter(key => key !== APP_SHELL_CACHE && key !== RUNTIME_CACHE)
 					.map(key => caches.delete(key)),
 			))

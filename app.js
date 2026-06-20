@@ -1,6 +1,7 @@
 if ('serviceWorker' in navigator)
 {
 	const version = window.appConfig?.version ?? String(Date.now());
+	const reloadGuardKey = `easy-dua-sw-reloaded-${version}`;
 	let refreshing = false;
 
 	function getUpdateBannerElements()
@@ -44,6 +45,12 @@ if ('serviceWorker' in navigator)
 		}
 
 		refreshing = true;
+
+		if (window.sessionStorage.getItem(reloadGuardKey) === '1') {
+			return;
+		}
+
+		window.sessionStorage.setItem(reloadGuardKey, '1');
 		window.location.reload();
 	});
 
@@ -51,6 +58,10 @@ if ('serviceWorker' in navigator)
 	{
 		navigator.serviceWorker.register(`/sw.js?v=${encodeURIComponent(version)}`).then(registration => {
 			console.log('serviceWorker registered. Scope: ', registration.scope);
+
+			registration.update().catch(error => {
+				console.log('serviceWorker startup update check failed', error);
+			});
 
 			if (registration.waiting) {
 				showUpdateBanner(registration.waiting);

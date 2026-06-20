@@ -6,6 +6,7 @@
 	$prg_name    = $app_config['programName'] ?? 'Easy Dua';
 	$version     = $app_config['version'] ?? 'dev';
 	$version_tag = 'v' . $version;
+	$asset_query = '?v=' . rawurlencode($version);
 	$color       = $app_config['color'] ?? 'steelblue';
 	$canonical   = $app_config['canonicalUrl'] ?? 'https://dua.fklavye.net';
 	$repository  = $app_config['repositoryUrl'] ?? 'https://github.com/obozdag/dua';
@@ -30,9 +31,9 @@
 	<meta name="apple-mobile-web-app-status-bar" content="<?= $color ?>">
 	<meta name="theme-color" content="<?= $color ?>">
 	<link rel="canonical" href="<?= htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') ?>">
-	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css">
-	<link rel="apple-touch-icon" href="/css/icons/easy_dua_96x96.png">
-	<link rel="manifest" href="easy_dua.json">
+	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css<?= $asset_query ?>">
+	<link rel="apple-touch-icon" href="/css/icons/apple-touch-icon.png<?= $asset_query ?>">
+	<link rel="manifest" href="/easy_dua.json<?= $asset_query ?>">
 	<script type="text/javascript">
 		window.appConfig = {
 			programName: '<?= htmlspecialchars($prg_name, ENT_QUOTES, 'UTF-8') ?>',
@@ -40,9 +41,9 @@
 			versionLabel: '<?= htmlspecialchars($version_tag, ENT_QUOTES, 'UTF-8') ?>'
 		};
 	</script>
-	<script src="/js/swipe.js"></script>
-	<script src="/app.js"></script>
-	<script type="module" src="/js/app/main.js"></script>
+	<script src="/js/swipe.js<?= $asset_query ?>"></script>
+	<script src="/app.js<?= $asset_query ?>"></script>
+	<script type="module" src="/js/app/main.js<?= $asset_query ?>"></script>
 </head>
 <body>
 	<div id="loading_overlay">
