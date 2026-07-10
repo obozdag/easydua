@@ -33,7 +33,7 @@
 	<link rel="canonical" href="<?= htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') ?>">
 	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css<?= $asset_query ?>">
 	<link rel="apple-touch-icon" href="/css/icons/apple-touch-icon.png<?= $asset_query ?>">
-	<link rel="manifest" href="/easy_dua.json<?= $asset_query ?>">
+	<link rel="manifest" href="/manifest.php">
 	<script type="text/javascript">
 		window.appConfig = {
 			programName: '<?= htmlspecialchars($prg_name, ENT_QUOTES, 'UTF-8') ?>',

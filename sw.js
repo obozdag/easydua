@@ -39,7 +39,7 @@ const staticContentToCache = [
 	'dua.php?slug=tefriciye&language=ar',
 	'dua.php?slug=tercumani_ismi_azam&language=ar',
 	'favicon.ico',
-	versionedAsset('easy_dua.json'),
+	'manifest.php',
 	'images/flower.png',
 	'images/lavender.png',
 	'images/liltree.png',
