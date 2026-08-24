@@ -29,7 +29,7 @@
 	<meta name="description" content="Easy Dua, easy to read, easy to scroll (top-to-bottom), lightweight (200KB), lightning fast, multi language, responsive, progressive web app.">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="theme-color" content="<?= $color ?>">
 	<link rel="canonical" href="<?= htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') ?>">
 	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css<?= $asset_query ?>">
@@ -160,7 +160,7 @@
 		<div class="overlay" id="program_info_popup">
 			<div class="popup">
 				<i id="close_popup_btn" class="close_btn right rb-circle-xmark"></i>
-				<h3><i class="logo rb-hands-praying-solid"></i> <?= $prg_name ?></h3>
+				<h3><i class="logo rb-hands-praying-solid"></i> <?= $prg_name . ' ' . $version_tag ?></h3>
 				<div id="program_info_content"></div>
 			</div>
 		</div>
