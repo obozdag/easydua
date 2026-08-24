@@ -27,8 +27,9 @@
 	<title>Easy Dua</title>
 	<meta charset="utf-8">
 	<meta name="description" content="Easy Dua, easy to read, easy to scroll (top-to-bottom), lightweight (200KB), lightning fast, multi language, responsive, progressive web app.">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-status-bar" content="<?= $color ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 	<meta name="theme-color" content="<?= $color ?>">
 	<link rel="canonical" href="<?= htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') ?>">
 	<link rel="stylesheet" type="text/css" href="/css/easy_dua.css<?= $asset_query ?>">

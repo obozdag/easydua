@@ -3,7 +3,7 @@
 	"short_name": "Easy Dua",
 	"description": "Easy to read and scroll",
 	"start_url": "/",
-	"display": "fullscreen",
+	"display": "standalone",
 	"background_color": "steelblue",
 	"theme_color": "steelblue",
 	"icons": [

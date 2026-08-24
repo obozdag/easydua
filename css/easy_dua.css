@@ -10,6 +10,11 @@
 	--max-width: 768px; /* maximum width for container */
 	--nsbc: steelblue; /* nav side background color */
 	--nth: 42px; /* nav top height */
+	--safe-area-top: env(safe-area-inset-top, 0px);
+	--safe-area-right: env(safe-area-inset-right, 0px);
+	--safe-area-bottom: env(safe-area-inset-bottom, 0px);
+	--safe-area-left: env(safe-area-inset-left, 0px);
+	--nav-top-height: calc(var(--nth) + var(--safe-area-top));
 	--set-bg-color: cornsilk; /* arabic background color */
 	--set-color: red; /* color to change in settings */ /* SET IN JS */
 	--set-font-family: 'EasyArabic'; /* arabic font family */ /* SET IN JS */
@@ -121,7 +126,7 @@ i {
 	background-color: var(--set-bg-color);
 	color: var(--ac);
 	direction: rtl;
-	padding: var(--nth) 5px;
+	padding: var(--nav-top-height) max(5px, var(--safe-area-right)) var(--nth) max(5px, var(--safe-area-left));
 }
 #nav_top {
 	position: fixed;
@@ -130,10 +135,10 @@ i {
 	top: 0;
 	left: 0;
 	right: 0;
-	max-height: var(--nth);
+	min-height: var(--nav-top-height);
 	max-width: var(--max-width);
 	margin: 0 auto;
-	padding: 10px;
+	padding: calc(10px + var(--safe-area-top)) max(10px, var(--safe-area-right)) 10px max(10px, var(--safe-area-left));
 	background-color: var(--set-color);
 	color: white;
 	z-index: 1;
@@ -152,10 +157,11 @@ i {
 }
 #nav_left, #nav_right {
 	position: fixed;
-	top: var(--nth);
+	top: var(--nav-top-height);
 	width: 75%;
 	max-width: 400px;
-	height: 100vh;
+	height: calc(100vh - var(--nav-top-height));
+	height: calc(100dvh - var(--nav-top-height));
 	margin: 0;
 	padding: 3rem 1rem;
 	background-color: var(--nsbc);
@@ -167,10 +173,14 @@ i {
 }
 #nav_left {
 	left: -75%;
+	padding-left: max(1rem, var(--safe-area-left));
+	padding-bottom: max(3rem, var(--safe-area-bottom));
 	border-top-right-radius: var(--brs);
 }
 #nav_right {
 	right: -75%;
+	padding-right: max(1rem, var(--safe-area-right));
+	padding-bottom: max(3rem, var(--safe-area-bottom));
 	border-top-left-radius: var(--brs);
 }
 #nav_left.open {
@@ -339,6 +349,7 @@ i {
 }
 #program_info_content {
 	max-height: 70vh;
+	max-height: 70dvh;
 	margin-top: 2rem;
 	overflow-y: auto;
 }
@@ -401,6 +412,7 @@ footer .logo {
 	bottom: 0;
 	width: 100vw;
 	height: 100vh;
+	height: 100dvh;
 	background-color: var(--theme-color);
 	z-index: 200;
 	opacity: 1;
@@ -420,7 +432,7 @@ footer .logo {
 	position: fixed;
 	left: 0;
 	right: 0;
-	bottom: 1rem;
+	bottom: max(1rem, var(--safe-area-bottom));
 	display: flex;
 	justify-content: center;
 	align-items: center;
