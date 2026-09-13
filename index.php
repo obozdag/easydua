@@ -67,7 +67,11 @@
 		<i id="open_nav_right" class="nav_top_btn rb-slider" title="Nav Right"></i>
 	</nav>
 	<nav id="nav_left">
-		<i class="close_btn right rb-circle-xmark" id="close_nav_left"></i>
+		<div class="drawer_header">
+			<span aria-hidden="true"></span>
+			<h4 id="dua_list_label" class="settings_header"></h4>
+			<i class="close_btn right rb-circle-xmark" id="close_nav_left"></i>
+		</div>
 		<div class="settings">
 			<div class="row">
 				<label id="paragraph_input_label"></label>
@@ -77,7 +81,6 @@
 				</span>
 			</div>
 			<div class="row" id="dua_list_row">
-				<label id="dua_list_label"></label>
 				<div id="dua_list_container">
 					<ul id="dua_list">
 					</ul>
@@ -86,8 +89,11 @@
 		</div>
 	</nav>
 	<nav id="nav_right">
-		<i class="close_btn left rb-circle-xmark" id="close_nav_right"></i>
-		<h4 id="settings_header"></h4>
+		<div class="drawer_header">
+			<i class="close_btn left rb-circle-xmark" id="close_nav_right"></i>
+			<h4 id="settings_header" class="settings_header"></h4>
+			<span aria-hidden="true"></span>
+		</div>
 		<div class="settings">
 			<div class="row">
 				<label id="font_family_list_label"></label>

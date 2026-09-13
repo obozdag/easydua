@@ -163,7 +163,7 @@ i {
 	height: calc(100vh - var(--nav-top-height));
 	height: calc(100dvh - var(--nav-top-height));
 	margin: 0;
-	padding: 3rem 1rem;
+	padding: .75rem 1rem;
 	background-color: var(--nsbc);
 	font-size: 1rem;
 	color: white;
@@ -191,7 +191,7 @@ i {
 }
 .close_btn {
 	position: absolute;
-	top: 10px;
+	top: .75rem;
 	cursor: pointer;
 }
 .close_btn.right {
@@ -202,6 +202,22 @@ i {
 }
 .close_btn:hover {
 	color: white;
+}
+.drawer_header {
+	display: grid;
+	grid-template-columns: 2rem minmax(0, 1fr) 2rem;
+	align-items: center;
+	min-height: 2rem;
+	margin-bottom: 1rem;
+}
+.drawer_header .close_btn {
+	position: static;
+}
+.drawer_header .close_btn.left {
+	justify-self: start;
+}
+.drawer_header .close_btn.right {
+	justify-self: end;
 }
 .text_right {
 	text-align: right;
@@ -216,8 +232,8 @@ i {
 }
 .settings .row {
 	display: grid;
-	grid-template-columns: 30% 65%;
-	grid-gap: 5px;
+	grid-template-columns: minmax(0, 1fr);
+	grid-gap: .35rem;
 	margin-bottom: 1rem;
 }
 .settings input,
@@ -230,12 +246,18 @@ i {
 	font-size: 1rem;
 	outline: none;
 }
-#settings_header {
-	margin-bottom: 1rem;
-	padding: .5rem 1rem;
-	border-bottom: 1px solid rgba(200, 200, 200, .5);
+.settings_header {
+	margin: 0;
+	padding: .35rem 0;
 	text-align: center;
 	font-size: 1.2rem;
+}
+.settings label {
+	line-height: 1.25;
+	text-align: left;
+}
+.settings label:empty {
+	display: none;
 }
 #dua_list_container {
 	padding: 5px;
