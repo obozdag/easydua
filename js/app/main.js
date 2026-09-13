@@ -77,7 +77,9 @@ async function applyLanguage(elements, language)
 	applyUpdateBannerLabels();
 	renderTabLinks(elements.duaList, getLabels(state.currentLanguage).duas, tabId => {
 		state.currentTab = tabId;
-		openTab(elements, tabId);
+		if (openTab(elements, tabId)) {
+			requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+		}
 	});
 	saveValue('language', state.currentLanguage);
 	await loadTabs(elements);
