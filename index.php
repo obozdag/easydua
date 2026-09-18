@@ -63,6 +63,9 @@
 		<i id="top_btn" class="nav_top_btn rb-up" title="Top"></i>
 		<i id="bottom_btn" class="nav_top_btn rb-down" title="Bottom"></i>
 		<span><i id="bookmark_icon" class="nav_top_btn rb-bookmark" title="Bookmark"></i><span id="bookmark_container"></span></span>
+		<button type="button" id="theme_mode_btn" class="nav_top_btn theme_mode_btn">
+			<span class="theme_mode_icon" aria-hidden="true"></span>
+		</button>
 		<i id="open_nav_right" class="nav_top_btn rb-slider" title="Nav Right"></i>
 	</nav>
 	<nav id="nav_left">

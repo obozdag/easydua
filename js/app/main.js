@@ -1,4 +1,4 @@
-import { bgColors, colors, defaults, fontFamilies, fontSizes, languages } from './data/settings.js';
+import { bgColors, colors, defaults, fontFamilies, fontSizes, languages, themes } from './data/settings.js';
 import { translations } from './data/translations.js';
 import { loadText } from './services/content.js';
 import { loadValue, removeValue, saveValue } from './services/storage.js';
@@ -18,6 +18,8 @@ import {
 } from './ui.js';
 
 const preferredLanguage = detectPreferredLanguage();
+const DAY_THEME_START_HOUR = 7;
+const NIGHT_THEME_START_HOUR = 19;
 
 const state = {
 	currentLanguage: getStoredLanguage(),
@@ -74,6 +76,7 @@ async function applyLanguage(elements, language)
 	state.currentLanguage = Object.hasOwn(languages, language) ? language : 'en';
 	elements.languageList.value = state.currentLanguage;
 	applyLabels(elements, getLabels(state.currentLanguage));
+	syncThemeButton(loadValue('theme', defaults.theme));
 	applyUpdateBannerLabels();
 	renderTabLinks(elements.duaList, getLabels(state.currentLanguage).duas, tabId => {
 		state.currentTab = tabId;
@@ -92,6 +95,54 @@ function applyAppearanceSettings(elements)
 	applyCSSSetting('--set-font-size', elements.fontSizeList.value, 'fontSize');
 	applyCSSSetting('--set-color', elements.colorList.value, 'color');
 	applyCSSSetting('--set-bg-color', elements.bgColorList.value, 'bgColor');
+	applyTheme(loadValue('theme', defaults.theme));
+}
+
+function applyTheme(theme)
+{
+	const selectedTheme = Object.hasOwn(themes, theme) ? theme : defaults.theme;
+	const resolvedTheme = selectedTheme === 'system'
+		? getAutomaticTheme()
+		: selectedTheme;
+
+	document.documentElement.dataset.theme = resolvedTheme;
+	document.documentElement.style.colorScheme = resolvedTheme;
+	document.querySelector('meta[name="theme-color"]')?.setAttribute(
+		'content',
+		resolvedTheme === 'dark' ? '#111827' : getComputedStyle(document.documentElement).getPropertyValue('--theme-color').trim(),
+	);
+	saveValue('theme', selectedTheme);
+	syncThemeButton(selectedTheme);
+}
+
+function syncThemeButton(theme)
+{
+	const button = document.getElementById('theme_mode_btn');
+	const icon = button?.querySelector('.theme_mode_icon');
+	if (!button || !icon) {
+		return;
+	}
+
+	const selectedTheme = Object.hasOwn(themes, theme) ? theme : defaults.theme;
+	const iconTheme = selectedTheme === 'system' ? 'auto' : selectedTheme;
+	const label = getLabels(state.currentLanguage).theme_mode_labels[selectedTheme];
+
+	icon.className = `theme_mode_icon theme_mode_icon_${iconTheme}`;
+	button.title = label;
+	button.setAttribute('aria-label', label);
+}
+
+function cycleTheme()
+{
+	const currentTheme = loadValue('theme', defaults.theme);
+	const nextTheme = currentTheme === 'light' ? 'dark' : currentTheme === 'dark' ? 'system' : 'light';
+	applyTheme(nextTheme);
+}
+
+function getAutomaticTheme(date = new Date())
+{
+	const hour = date.getHours();
+	return hour >= DAY_THEME_START_HOUR && hour < NIGHT_THEME_START_HOUR ? 'light' : 'dark';
 }
 
 function applyCSSSetting(property, value, storageKey)
@@ -128,6 +179,19 @@ function installEventListeners(elements)
 	elements.bgColorList.addEventListener('change', () => {
 		applyCSSSetting('--set-bg-color', elements.bgColorList.value, 'bgColor');
 		closePanels(elements);
+	});
+
+	elements.themeModeBtn.addEventListener('click', cycleTheme);
+	const refreshAutomaticTheme = () => {
+		if (loadValue('theme', defaults.theme) === 'system') {
+			applyTheme('system');
+		}
+	};
+	window.addEventListener('focus', refreshAutomaticTheme);
+	document.addEventListener('visibilitychange', () => {
+		if (!document.hidden) {
+			refreshAutomaticTheme();
+		}
 	});
 
 	elements.resetBtn.addEventListener('click', () => resetSettings(elements));
@@ -246,6 +310,7 @@ function resetSettings(elements)
 	elements.bgColorList.value = defaults.bgColor;
 	elements.languageList.value = preferredLanguage;
 
+	applyTheme(defaults.theme);
 	applyAppearanceSettings(elements);
 	void applyLanguage(elements, elements.languageList.value);
 	closePanels(elements);

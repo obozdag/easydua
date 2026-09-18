@@ -3,6 +3,13 @@ export const defaults = {
 	color: 'red',
 	fontFamily: 'EasyArabic',
 	fontSize: '36px',
+	theme: 'system',
+};
+
+export const themes = {
+	system: 'Auto',
+	light: 'Light',
+	dark: 'Dark',
 };
 
 export const languages = {

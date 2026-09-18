@@ -35,6 +35,7 @@ export function cacheElements()
 		programInfoPopup: document.getElementById('program_info_popup'),
 		resetBtn: document.getElementById('reset_btn'),
 		settingsHeader: document.getElementById('settings_header'),
+		themeModeBtn: document.getElementById('theme_mode_btn'),
 		tabContents: Array.from(document.getElementsByClassName('tabcontent')),
 		topBtn: document.getElementById('top_btn'),
 	};

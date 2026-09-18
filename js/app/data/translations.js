@@ -7,6 +7,11 @@ export const translations = {
 		font_size_list_label: 'Punto',
 		goto_paragraph_btn: 'Git',
 		language_list_label: 'Dil',
+		theme_mode_labels: {
+			system: 'Otomatik tema',
+			light: 'Açık tema',
+			dark: 'Koyu tema',
+		},
 		paragraph_input_label: 'Paragraf',
 		reset_btn: 'Reset',
 		confirm_delete_bookmark: 'Yer işaretini silmek istiyor musunuz?',
@@ -37,6 +42,11 @@ export const translations = {
 		font_size_list_label: 'Font Size',
 		goto_paragraph_btn: 'Go',
 		language_list_label: 'Language',
+		theme_mode_labels: {
+			system: 'Auto theme',
+			light: 'Light theme',
+			dark: 'Dark theme',
+		},
 		paragraph_input_label: 'Paragraph',
 		reset_btn: 'Reset',
 		confirm_delete_bookmark: 'Do you really want to delete bookmark?',
